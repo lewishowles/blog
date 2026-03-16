@@ -17,21 +17,29 @@
 		0 16px 32px rgba(var(--gray), 33%);
 }
 @font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
+	font-family: "Funnel Sans";
+	src: url("/fonts/FunnelSansVariable.woff2") format("woff2");
+	font-weight: 300 800;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
+	font-family: "Funnel Sans";
+	src: url("/fonts/FunnelSansVariable-Italic.woff2") format("woff2");
+	font-weight: 300 800;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: "IBM Plex Mono";
+	src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2");
+	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: "Funnel Sans", ui-sans-serif, system-ui, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -42,6 +50,11 @@ body {
 	color: rgb(var(--gray-dark));
 	font-size: 20px;
 	line-height: 1.7;
+}
+code, pre {
+	font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+		Consolas, "Liberation Mono", "Courier New", monospace;
+	font-size: 18px;
 }
 main {
 	width: 720px;
