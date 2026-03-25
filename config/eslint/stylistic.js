@@ -1,6 +1,7 @@
 import stylistic from "@stylistic/eslint-plugin";
 
 export default {
+	files: ["**/*.js", "**/*.ts"],
 	plugins: {
 		"@stylistic": stylistic,
 	},

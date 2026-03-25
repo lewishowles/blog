@@ -1,28 +1,29 @@
 {
-  "name": "blog",
-  "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^5.0.1",
-    "@astrojs/rss": "^4.0.17",
-    "@astrojs/sitemap": "^3.7.1",
-    "astro": "^6.0.5",
-    "sharp": "^0.34.3"
-  },
-  "devDependencies": {
-    "@eslint/css": "^1.0.0",
-    "@eslint/js": "^10.0.1",
-    "@stylistic/eslint-plugin": "^5.10.0",
-    "eslint": "^10.0.3",
-    "eslint-plugin-astro": "^1.6.0"
-  }
+	"name": "blog",
+	"type": "module",
+	"version": "0.0.1",
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"scripts": {
+		"astro": "astro",
+		"dev": "astro dev",
+		"preview": "astro preview",
+		"build": "astro build",
+		"lint": "eslint . --fix"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^5.0.1",
+		"@astrojs/rss": "^4.0.17",
+		"@astrojs/sitemap": "^3.7.1",
+		"astro": "^6.0.5",
+		"sharp": "^0.34.3"
+	},
+	"devDependencies": {
+		"@eslint/css": "^1.0.0",
+		"@eslint/js": "^10.0.1",
+		"@stylistic/eslint-plugin": "^5.10.0",
+		"eslint": "^10.0.3",
+		"eslint-plugin-astro": "^1.6.0"
+	}
 }
