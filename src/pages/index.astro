@@ -21,7 +21,7 @@ const posts = await getSortedBlogPosts()
 			<section>
 				<ul>
 					{
-						posts.map((post) => (
+						posts.map(post => (
 							<BlogPostPreview post={post} />
 						))
 					}
