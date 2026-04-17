@@ -1,18 +1,14 @@
 ---
 import { SITE_TITLE } from "@/consts";
+import IconGlasses from "@/components/icons/IconGlasses.astro"
 ---
 
 <header>
 	<nav>
 		<a href="/">
 			{SITE_TITLE}
+
+			<IconGlasses />
 		</a>
 	</nav>
 </header>
-
-<style>
-	header {
-		border-bottom: 1px solid var(--border-colour);
-		padding: 1em;
-	}
-</style>
