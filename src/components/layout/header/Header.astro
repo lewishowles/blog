@@ -1,0 +1,50 @@
+---
+import { SITE_TITLE } from "@/consts";
+import CloudLayerBack from "@/components/layout/header/CloudLayerBack.astro";
+import CloudLayerFront from "@/components/layout/header/CloudLayerFront.astro";
+import CloudLayerMiddle from "@/components/layout/header/CloudLayerMiddle.astro";
+import IconGlasses from "@/components/icons/IconGlasses.astro";
+import IconMoon from "@/components/icons/IconMoon.astro";
+import IconRSS from "@/components/icons/IconRSS.astro";
+import IconSun from "@/components/icons/IconSun.astro";
+import Logo from "@/components/layout/Logo.astro";
+import ScribbleHi from "@/components/scribbles/ScribbleHi.astro";
+---
+
+<header class="bg-linear-to-b from-blue-200 to-blue-300 pt-10 mb-11 w-full overflow-hidden">
+	<nav class="flex items-center gap-6 max-w-252 mx-auto mb-1">
+		<a href="/" class="relative">
+			<span class="sr-only">{SITE_TITLE}</span>
+
+			<Logo class="w-9.5 h-12" />
+			<ScribbleHi class="size-auto text-indigo-700 absolute inset-s-full inset-be-full ms-2.5 -mb-2" />
+		</a>
+
+		<div class="ms-auto flex items-center gap-6">
+			<a href="https://howles.dev" class="group">
+				<span class="sr-only">Visit the "howles.dev" website.</span>
+				<IconGlasses class="w-7 h-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+			</a>
+
+			<a href="#" class="group">
+				<span class="sr-only">Activate dark mode</span>
+				<IconSun class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+			</a>
+
+			<a href="#" class="group">
+				<span class="sr-only">Activate light mode</span>
+				<IconMoon class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+			</a>
+			<a href="/rss.xml" class="group">
+				<span class="sr-only">View RSS feed</span>
+				<IconRSS class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+			</a>
+		</div>
+	</nav>
+
+	<div class="translate-y-11">
+		<CloudLayerBack class="cloud-layer-back text-[#C2E8FC] w-auto min-w-[calc(100%+4rem)] h-55 ms-[50%] -translate-x-1/2" />
+		<CloudLayerMiddle class="cloud-layer-middle text-[#D8EFFB] -mt-44 w-auto min-w-[calc(100%+4rem)] h-55 ms-[50%] -translate-x-1/2" />
+		<CloudLayerFront class="cloud-layer-front text-white -mt-40 w-auto min-w-[calc(100%+4rem)] h-55 ms-[50%] -translate-x-1/2" />
+	</div>
+</header>

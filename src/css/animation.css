@@ -1,127 +1,317 @@
-@utility animate-fast {
-	@media (prefers-reduced-motion: no-preference) {
-		--animation-duration: 150ms;
-	}
+.animate-delay-75 {
+	animation-delay: 75ms;
 }
 
-@utility animate-fade-in {
-	@media (prefers-reduced-motion: no-preference) {
+.animate-delay-100 {
+	animation-delay: 100ms;
+}
+
+.animate-delay-150 {
+	animation-delay: 150ms;
+}
+
+.animate-delay-200 {
+	animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+	animation-delay: 300ms;
+}
+
+.animate-delay-500 {
+	animation-delay: 500ms;
+}
+
+.animate-delay-700 {
+	animation-delay: 700ms;
+}
+
+.animate-delay-1000 {
+	animation-delay: 1000ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.animate-fast {
+		--animation-duration: 150ms;
+	}
+
+	.animate-slow {
+		--animation-duration: 500ms;
+	}
+
+	.animate-fade-in {
 		opacity: 0;
 		animation-duration: var(--animation-duration, 250ms);
 		animation-timing-function: ease-in-out;
 		animation-fill-mode: forwards;
 		animation-name: fadeIn;
 	}
-}
 
-@utility animate-fade-in-up {
-	@media (prefers-reduced-motion: no-preference) {
+	.animate-fade-in-up {
 		opacity: 0;
 		animation-duration: var(--animation-duration, 250ms);
 		animation-timing-function: ease-in-out;
 		animation-fill-mode: forwards;
 		animation-name: fadeInUp;
 	}
-}
 
-@utility animate-fade-in-right {
-	@media (prefers-reduced-motion: no-preference) {
+	.animate-fade-in-right {
 		opacity: 0;
 		animation-duration: var(--animation-duration, 250ms);
 		animation-timing-function: ease-in-out;
 		animation-fill-mode: forwards;
 		animation-name: fadeInRight;
 	}
-}
 
-@utility animate-fade-in-down {
-	@media (prefers-reduced-motion: no-preference) {
+	.animate-fade-in-down {
 		opacity: 0;
 		animation-duration: var(--animation-duration, 250ms);
 		animation-timing-function: ease-in-out;
 		animation-fill-mode: forwards;
 		animation-name: fadeInDown;
 	}
-}
 
-@utility animate-fade-in-left {
-	@media (prefers-reduced-motion: no-preference) {
+	.animate-move-in-left {
+		animation-duration: var(--animation-duration, 250ms);
+		animation-timing-function: ease-in-out;
+		animation-fill-mode: forwards;
+		animation-name: moveInLeft;
+	}
+
+	.animate-fade-in-left {
 		opacity: 0;
 		animation-duration: var(--animation-duration, 250ms);
 		animation-timing-function: ease-in-out;
 		animation-fill-mode: forwards;
 		animation-name: fadeInLeft;
 	}
-}
 
-@utility delay-micro {
-	@media (prefers-reduced-motion: no-preference) {
+	.delay-micro {
 		animation-delay: calc(sibling-index() * 10ms);
 	}
-}
 
-@utility delay {
-	@media (prefers-reduced-motion: no-preference) {
+	.delay {
 		animation-delay: calc(sibling-index() * 50ms);
 	}
 }
 
-@layer utilities {
-	@keyframes fadeIn {
-		0% {
-			opacity: 0;
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(0.5rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes moveInRight {
+	0% {
+		transform: translateX(-0.5rem);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes moveInFarRight {
+	0% {
+		transform: translateX(-2rem);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		transform: translateX(-0.5rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-0.5rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes moveInLeft {
+	0% {
+		transform: translateX(0.5rem);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes moveInFarLeft {
+	0% {
+		transform: translateX(2rem);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(0.5rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	/**
+	 * Animate cloud layers to fade in, and move very slowly.
+	 */
+	.cloud-layer-back, .cloud-layer-middle, .cloud-layer-front {
+		opacity: 0;
+		animation-timing-function: linear, ease-in-out;
+		animation-duration: 20s, 1s;
+		animation-direction: alternate;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite, 1;
+		animation-name: cloudDrift, fadeIn;
+	}
+
+	.cloud-layer-back {
+		--cloud-drift-distance: 1rem;
+	}
+
+	.cloud-layer-middle {
+		--cloud-drift-distance: 2.5rem;
+	}
+
+	.cloud-layer-front {
+		--cloud-drift-distance: 5rem;
+
+		opacity: 1;
+		animation-name: cloudDrift;
+	}
+
+	@keyframes cloudDrift {
+		from {
+			translate: calc(-50% + calc(var(--cloud-drift-distance) * 0.5)) 0;
 		}
 
-		100% {
-			opacity: 1;
+		to {
+			translate: calc(-50% - calc(var(--cloud-drift-distance) * 0.5)) 0;
 		}
 	}
 
-	@keyframes fadeInUp {
-		0% {
-			opacity: 0;
-			transform: translateY(0.5rem);
-		}
+	/**
+	 * Animate icons as though their stroke was being drawn in a new colour when
+	 * hovering over their parent.
+	 */
+	.animate-stroke-hover [pathLength] {
+		stroke: var(--color-pink-800);
+		stroke-dasharray: 1;
+		stroke-dashoffset: 1;
+		transition: stroke-dashoffset 500ms ease, fill 500ms ease;
+	}
 
-		100% {
-			opacity: 1;
-			transform: translateY(0);
+	a, button {
+		&:hover, &:focus-visible {
+			&:has(.animate-stroke-hover) {
+				/* Keep our original anchor colour, so that we can animate in the
+				replacement instead */
+				color: var(--color-indigo-800);
+			}
+
+			& > .animate-stroke-hover:has([pathLength]) {
+				& > [pathLength] {
+					stroke-dashoffset: 0;
+					transition: stroke-dashoffset 1000ms ease;
+					transition-delay: 120ms;
+				}
+
+				& > path[fill] {
+					fill: var(--color-pink-800);
+					transition: stroke-dashoffset 1000ms ease, fill 1000ms ease;
+				}
+			}
 		}
 	}
 
-	@keyframes fadeInRight {
-		0% {
-			opacity: 0;
-			transform: translateX(-0.5rem);
+	/**
+	 * Animate a "scribble" as if it were being drawn in on page load.
+	 */
+	.scribble {
+		transition: color 500ms ease, transform 500ms ease;
+
+		[pathLength] {
+			stroke-dasharray: 1;
+			stroke-dashoffset: 1;
+			animation: scribble-draw 800ms ease forwards;
 		}
 
-		100% {
-			opacity: 1;
-			transform: translateY(0);
+		[fill="currentColor"] {
+			fill: transparent;
+			animation: scribble-fill 400ms ease forwards;
+		}
+
+		:hover > &, :focus-visible > & {
+			color: var(--color-pink-800);
+			transform: rotate(5deg);
 		}
 	}
 
-	@keyframes fadeInDown {
-		0% {
-			opacity: 0;
-			transform: translateY(-0.5rem);
-		}
-
-		100% {
-			opacity: 1;
-			transform: translateY(0);
+	@keyframes scribble-draw {
+		to {
+			stroke-dashoffset: 0;
 		}
 	}
 
-	@keyframes fadeInLeft {
-		0% {
-			opacity: 0;
-			transform: translateX(0.5rem);
+	@keyframes scribble-fill {
+		to {
+			fill: currentColor;
 		}
+	}
+}
 
-		100% {
-			opacity: 1;
-			transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+	.animate-stroke-hover [pathLength] {
+		:hover, :focus-visible {
+			& > [pathLength] {
+				stroke: var(--color-pink-800)
+			}
+
+			& > path[fill] {
+				fill: var(--color-pink-800);
+			}
 		}
 	}
 }

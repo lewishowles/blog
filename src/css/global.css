@@ -1,5 +1,6 @@
-@import url("font.css") layer(base);
-@import url("animation.css");
+@import "./font.css" layer(base);
+@import "./utilities.css" layer(utilities);
+@import "./animation.css" layer(utilities);
 
 @import "tailwindcss";
 
@@ -93,7 +94,30 @@
 
 	:root {
 		--primary-gradient-start: var(--color-pink-700);
-		--primary-gradient-end: var(--color-indigo-800);
+		--primary-gradient-end: var(--color-purple-800);
+		--logo-gradient-start: var(--color-pink-700);
+		--logo-gradient-end: var(--color-purple-800);
+
+		--link-base-colour: var(--color-indigo-800);
+		--link-hocus-colour: var(--color-pink-800);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--logo-gradient-start: currentColor;
+			--logo-gradient-end: currentColor;
+
+			--link-base-colour: var(--color-indigo-300);
+			--link-hocus-colour: var(--color-pink-300);
+		}
+	}
+
+	.dark {
+		--logo-gradient-start: currentColor;
+		--logo-gradient-end: currentColor;
+
+		--link-base-colour: var(--color-indigo-300);
+		--link-hocus-colour: var(--color-pink-300);
 	}
 
 	svg {
@@ -106,10 +130,16 @@
 	}
 
 	a, summary {
-		@apply text-indigo-800 underline underline-offset-4;
+		color: var(--link-base-colour);
+
+		@apply underline underline-offset-4;
 		@apply hocus:text-indigo-900 hocus:no-underline;
 		@apply dark:text-indigo-300;
 		@apply dark:hocus:text-indigo-200;
+
+		&:hover, &:focus-visible {
+			color: var(--link-hocus-colour);
+		}
 	}
 
 	button {
