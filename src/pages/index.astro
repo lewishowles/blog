@@ -8,13 +8,15 @@ const posts = await getSortedBlogPosts()
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<section>
-		<ul>
-			{
-				posts.map(post => (
-					<BlogPostPreview post={post} />
-				))
-			}
-		</ul>
+	<h1 class="sr-only">The blog of Lewis Howles</h1>
+
+	<section class="flex flex-col gap-12">
+		<h2 class="sr-only">Recent articles</h2>
+
+		{
+			posts.map(post => (
+				<BlogPostPreview post={post} />
+			))
+		}
 	</section>
 </Page>

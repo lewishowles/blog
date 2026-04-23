@@ -1,15 +1,33 @@
 ---
+import IconArrowRight from "@/components/icons/IconArrowRight.astro"
 import FormattedDate from "@/components/helpers/FormattedDate.astro";
 
 const { post } = Astro.props;
 ---
 
-<li>
-	<a href={`/${post.id}/`}>
-		<h4>{post.data.title}</h4>
+<article class="flex flex-col gap-4">
+	<div class="flex flex-col gap-2">
+		<h3 class="text-3xl text-grey-950 font-bold">
+			<a href={`/${post.id}/`} class="text-current subtle-link transition-colors group" tabindex="-1">
+				{post.data.title}
 
-		<p>
-			<FormattedDate date={post.data.pubDate} />
-		</p>
-	</a>
-</li>
+				<IconArrowRight class="size-4 show-on-hover inline-block ms-1" />
+			</a>
+		</h3>
+
+		<dl class="flex gap-4 text-sm">
+			<div class="flex gap-2">
+				<dt class="italic text-grey-500">Published</dt>
+				<dd class="font-semibold"><FormattedDate date={post.data.pubDate} /></dd>
+			</div>
+		</dl>
+	</div>
+
+	<p>{post.data.description}</p>
+
+	<a href={`/${post.id}/`}>
+			Read more
+
+			<IconArrowRight class="size-3.5 inline-block ms-1" />
+		</a>
+</article>

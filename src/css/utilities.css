@@ -1,0 +1,14 @@
+.subtle-link {
+	text-decoration: none;
+	transition: color var(--default-transition-duration);
+
+	&:hover, &:focus-visible {
+		color: var(--link-hocus-colour);
+		text-decoration: underline;
+	}
+}
+
+.show-on-hover {
+	@apply opacity-0 motion-safe:-translate-x-1 motion-safe:transition-all;
+	@apply group-hocus:opacity-100 motion-safe:group-hocus:translate-x-0;
+}
