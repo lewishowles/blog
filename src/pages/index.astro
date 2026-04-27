@@ -13,11 +13,11 @@ const posts = await getSortedBlogPosts();
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<div class="grid grid-cols-[1fr_20rem] gap-22">
+	<div class="grid grid-cols-1 gap-22 lg:grid-cols-[1fr_20rem]">
 		<div>
 			<h1 class="sr-only">The blog of Lewis Howles</h1>
 
-			<section class="flex flex-col gap-12">
+			<section class="flex flex-col gap-20">
 				<h2 class="sr-only">Recent articles</h2>
 
 				{posts.map(post => <BlogPostPreview post={post} />)}
@@ -39,8 +39,8 @@ const posts = await getSortedBlogPosts();
 					<p>For more information about me, take a look at my primary website, <a href="https://howles.dev" class="text-current">https://howles.dev</a></p>
 				</SummaryDetails>
 
-				<DoodleBoosterLeft class="size-auto text-indigo-700 absolute top-0 mt-11 right-full" />
-				<DoodleBoosterRight class="size-auto text-indigo-700 absolute top-0 mt-11 left-full" />
+				<DoodleBoosterLeft class="size-auto text-indigo-700 absolute top-0 mt-11 right-full hidden lg:block" />
+				<DoodleBoosterRight class="size-auto text-indigo-700 absolute top-0 mt-11 left-full hidden lg:block" />
 			</div>
 		</div>
 	</div>
