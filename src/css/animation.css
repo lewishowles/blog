@@ -27,7 +27,7 @@
 }
 
 .animate-delay-1000 {
-	animation-delay: 1000ms;
+	animation-delay: 1s;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -243,13 +243,13 @@
 		& > .animate-stroke-hover:has([pathLength]) {
 			& > [pathLength] {
 				stroke-dashoffset: 0;
-				transition: stroke-dashoffset 1000ms ease;
+				transition: stroke-dashoffset 1s ease;
 				transition-delay: 120ms;
 			}
 
 			& > path[fill] {
 				fill: var(--color-pink-800);
-				transition: stroke-dashoffset 1000ms ease, fill 1000ms ease;
+				transition: stroke-dashoffset 1s ease, fill 1s ease;
 			}
 		}
 	}
@@ -263,7 +263,7 @@
 		[pathLength] {
 			stroke-dasharray: 1;
 			stroke-dashoffset: 1;
-			animation: doodle-draw 800ms ease forwards;
+			animation: doodle-draw 2s ease forwards;
 		}
 
 		[fill="currentColor"] {

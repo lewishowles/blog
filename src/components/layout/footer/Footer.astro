@@ -1,7 +1,25 @@
 ---
+import HillLayerBack from "@/components/layout/footer/hill-layer-back.astro"
+import HillLayerMiddle from "@/components/layout/footer/hill-layer-middle.astro"
+import HillLayerFront from "@/components/layout/footer/hill-layer-front.astro"
+import IconExternal from "@/components/icons/icon-external.astro"
+import DoodleBirds from "@/components/doodles/footer/doodle-birds.astro"
+import DoodleFence from "@/components/doodles/footer/doodle-fence.astro"
+import DoodleSheep from "@/components/doodles/footer/doodle-sheep.astro"
+
 const today = new Date();
 ---
 
-<footer>
-	&copy; {today.getFullYear()} Lewis Howles. All rights reserved.
+<footer class="grid mt-40 overflow-hidden">
+	<HillLayerBack class="[grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
+	<HillLayerMiddle class="[grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
+	<HillLayerFront class="[grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
+	<DoodleFence class="text-indigo-700 [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
+	<DoodleSheep class="text-indigo-700 [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
+	<DoodleBirds class="text-indigo-700 [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
+
+	<div class="[grid-area:1/1] z-10 w-full max-w-252 mx-auto flex flex-col justify-end pb-10">
+		<p class="text-sm text-green-950">&copy; {today.getFullYear()} &middot; <span class="font-bold">Lewis Howles</span></p>
+		<p class="text-xs text-green-900">Welcome to the footer! &middot; While you’re here, why not <a href="https://howles.dev" class="inline-flex gap-1 items-center text-current">learn more about me <IconExternal /></a></p>
+	</div>
 </footer>
