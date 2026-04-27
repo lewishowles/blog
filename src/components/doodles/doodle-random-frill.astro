@@ -1,0 +1,10 @@
+---
+const { class: className } = Astro.props;
+
+const frillModules = import.meta.glob<{ default: Function }>("./frills/*.astro", { eager: true });
+const frills = Object.values(frillModules).map(m => m.default);
+
+const RandomFrill = frills[Math.floor(Math.random() * frills.length)];
+---
+
+<RandomFrill class={className} />

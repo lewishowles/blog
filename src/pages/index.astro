@@ -1,10 +1,11 @@
 ---
-import BlogPostPreview from "@/components/blog/BlogPostPreview.astro"
-import Page from "@/layouts/Page.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import { getSortedBlogPosts } from "@/helpers/posts";
 
-const posts = await getSortedBlogPosts()
+import BlogPostPreview from "@/components/blog/blog-post-preview.astro";
+import Page from "@/layouts/Page.astro";
+
+const posts = await getSortedBlogPosts();
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION}>

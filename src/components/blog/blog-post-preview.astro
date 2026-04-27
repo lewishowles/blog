@@ -1,6 +1,7 @@
 ---
-import IconArrowRight from "@/components/icons/IconArrowRight.astro"
-import FormattedDate from "@/components/helpers/FormattedDate.astro";
+import DoodleRandomFrill from "@/components/doodles/doodle-random-frill.astro";
+import FormattedDate from "@/components/helpers/formatted-date.astro";
+import IconArrowRight from "@/components/icons/icon-arrow-right.astro";
 
 const { post } = Astro.props;
 ---
@@ -8,7 +9,9 @@ const { post } = Astro.props;
 <article class="flex flex-col gap-4">
 	<div class="flex flex-col gap-2">
 		<h3 class="text-3xl text-grey-950 font-bold">
-			<a href={`/${post.id}/`} class="text-current subtle-link transition-colors group" tabindex="-1">
+			<a href={`/${post.id}/`} class="text-current subtle-link transition-colors group relative" tabindex="-1">
+				<DoodleRandomFrill class="text-indigo-700 size-auto absolute right-full top-0 -mt-4" />
+
 				{post.data.title}
 
 				<IconArrowRight class="size-4 show-on-hover inline-block ms-1" />

@@ -39,36 +39,36 @@
 		--animation-duration: 500ms;
 	}
 
-	.animate-fade-in {
+	.animate-fade-in,
+	.animate-fade-in-up,
+	.animate-fade-in-right,
+	.animate-fade-in-down,
+	.animate-move-in-left,
+	.animate-fade-in-left {
 		opacity: 0;
 		animation-duration: var(--animation-duration, 250ms);
 		animation-timing-function: ease-in-out;
 		animation-fill-mode: forwards;
+	}
+
+	.animate-fade-in {
 		animation-name: fadeIn;
 	}
 
 	.animate-fade-in-up {
-		opacity: 0;
-		animation-duration: var(--animation-duration, 250ms);
-		animation-timing-function: ease-in-out;
-		animation-fill-mode: forwards;
 		animation-name: fadeInUp;
 	}
 
 	.animate-fade-in-right {
-		opacity: 0;
-		animation-duration: var(--animation-duration, 250ms);
-		animation-timing-function: ease-in-out;
-		animation-fill-mode: forwards;
 		animation-name: fadeInRight;
 	}
 
 	.animate-fade-in-down {
-		opacity: 0;
-		animation-duration: var(--animation-duration, 250ms);
-		animation-timing-function: ease-in-out;
-		animation-fill-mode: forwards;
 		animation-name: fadeInDown;
+	}
+
+	.animate-fade-in-left {
+		animation-name: fadeInLeft;
 	}
 
 	.animate-move-in-left {
@@ -76,14 +76,6 @@
 		animation-timing-function: ease-in-out;
 		animation-fill-mode: forwards;
 		animation-name: moveInLeft;
-	}
-
-	.animate-fade-in-left {
-		opacity: 0;
-		animation-duration: var(--animation-duration, 250ms);
-		animation-timing-function: ease-in-out;
-		animation-fill-mode: forwards;
-		animation-name: fadeInLeft;
 	}
 
 	.delay-micro {
@@ -243,25 +235,21 @@
 		transition: stroke-dashoffset 500ms ease, fill 500ms ease;
 	}
 
-	a, button {
-		&:hover, &:focus-visible {
-			&:has(.animate-stroke-hover) {
-				/* Keep our original anchor colour, so that we can animate in the
-				replacement instead */
-				color: var(--color-indigo-800);
+	:is(a, button):is(:hover, :focus-visible) {
+		&:has(.animate-stroke-hover) {
+			color: var(--color-indigo-800);
+		}
+
+		& > .animate-stroke-hover:has([pathLength]) {
+			& > [pathLength] {
+				stroke-dashoffset: 0;
+				transition: stroke-dashoffset 1000ms ease;
+				transition-delay: 120ms;
 			}
 
-			& > .animate-stroke-hover:has([pathLength]) {
-				& > [pathLength] {
-					stroke-dashoffset: 0;
-					transition: stroke-dashoffset 1000ms ease;
-					transition-delay: 120ms;
-				}
-
-				& > path[fill] {
-					fill: var(--color-pink-800);
-					transition: stroke-dashoffset 1000ms ease, fill 1000ms ease;
-				}
+			& > path[fill] {
+				fill: var(--color-pink-800);
+				transition: stroke-dashoffset 1000ms ease, fill 1000ms ease;
 			}
 		}
 	}
@@ -283,7 +271,7 @@
 			animation: doodle-fill 400ms ease forwards;
 		}
 
-		:hover > &, :focus-visible > & {
+		:is(a, button):hover > &, :is(a, button):focus-visible > & {
 			color: var(--color-pink-800);
 			transform: rotate(5deg);
 		}
