@@ -1,0 +1,281 @@
+---
+/**
+ * Provides an implementation of the `details` element with optional extras,
+ * and allows a simple way of having content that can be toggled. Suitable for
+ * items such as FAQs or even dropdown menus.
+ *
+ * Icons are slot-driven:
+ * - `icon-closed` — shown when the details are closed (default: IconChevronDownCircled)
+ * - `icon-open`   — shown when the details are open (default: IconChevronUpCircled)
+ * - `icon`        — a single override icon shown in both states
+ *
+ * Exposes `openDetails()` and `closeDetails()` methods on the host element,
+ * accessible via `document.querySelector("summary-details").openDetails()`.
+ */
+
+import IconChevronDownCircled from "@/components/icons/icon-chevron-down-circled.astro";
+import IconChevronUpCircled from "@/components/icons/icon-chevron-up-circled.astro";
+
+export interface Props {
+	/**
+	 * Whether the details element should initially be open.
+	 */
+	open?: boolean;
+
+	/**
+	 * Whether to close the details element when pressing escape. If focus is
+	 * within this component, focus is moved to the summary element.
+	 */
+	closeWithEscape?: boolean;
+
+	/**
+	 * Whether to close the details element when clicking outside of the
+	 * component. This is best combined with `floating` for menus.
+	 */
+	closeWithClickOutside?: boolean;
+
+	/**
+	 * Whether to display the icon at the start of the summary, as opposed to
+	 * the end.
+	 */
+	iconAtStart?: boolean;
+
+	/**
+	 * Whether to include a summary icon at all.
+	 */
+	includeIcon?: boolean;
+
+	/**
+	 * Whether to only show the icon, visually hiding any provided summary text.
+	 * Text in the summary slot is still rendered for screen readers.
+	 */
+	iconOnly?: boolean;
+
+	/**
+	 * Whether the details content should float (position: absolute) when open,
+	 * suitable for dropdown menus.
+	 */
+	floating?: boolean;
+
+	/**
+	 * When floating, whether to align the dropdown to the "start" or "end" of
+	 * the summary. Defaults to "start".
+	 */
+	align?: "start" | "end";
+
+	/**
+	 * Additional classes for the summary element.
+	 */
+	summaryClasses?: string;
+
+	/**
+	 * Additional classes for the details content wrapper.
+	 */
+	detailsClasses?: string;
+
+	/**
+	 * Additional classes for the icon wrapper element.
+	 */
+	iconClasses?: string;
+
+	/**
+	 * Classes applied directly to the root details element.
+	 */
+	class?: string;
+}
+
+const {
+	align = "start",
+	class: className,
+	closeWithClickOutside = false,
+	closeWithEscape = true,
+	detailsClasses = "mt-3",
+	floating = false,
+	iconAtStart = false,
+	iconClasses,
+	iconOnly = false,
+	includeIcon = true,
+	open = false,
+	summaryClasses,
+} = Astro.props;
+
+// Whether the user has provided a single icon that overrides both states.
+const hasIconOverride = Astro.slots.has("icon");
+// Whether the user has provided a custom closed-state icon.
+const hasIconClosed = Astro.slots.has("icon-closed");
+// Whether the user has provided a custom open-state icon.
+const hasIconOpen = Astro.slots.has("icon-open");
+// Whether to align a floating dropdown to the start of the summary.
+const alignStart = align === "start";
+// The classes provided directly by the user on the root element, used to check
+// whether a positioning class is already present.
+const userClasses = className ? className.split(" ") : [];
+
+// Only inject "relative" if floating is enabled and the user hasn't already
+// provided a positioning class.
+let floatingRootClasses = "";
+
+if (floating && !userClasses.includes("absolute") && !userClasses.includes("relative")) {
+	floatingRootClasses = "relative";
+}
+
+// Classes for the floating content wrapper, positioning it below the summary.
+let floatingContentClasses = "";
+
+if (floating) {
+	floatingContentClasses = `absolute top-full animate-fade-in-down ${alignStart ? "start-0" : "end-0"}`;
+}
+---
+
+<details
+	data-summary-details
+	data-close-with-escape={closeWithEscape ? "true" : "false"}
+	data-close-with-click-outside={closeWithClickOutside ? "true" : "false"}
+	data-floating={floating ? "true" : "false"}
+	class:list={["group", className, floatingRootClasses]}
+	open={open || undefined}
+>
+	<summary class:list={["inline-flex cursor-pointer list-none items-center gap-2", summaryClasses]}>
+		{iconOnly ? (
+			<span class="sr-only">
+				<slot name="summary" />
+			</span>
+		) : (
+			<slot name="summary" />
+		)}
+
+		{includeIcon && (
+			<span aria-hidden="true" class:list={[{ "order-first": iconAtStart }, iconClasses]}>
+				{hasIconOverride ? (
+					<slot name="icon" />
+				) : (
+					<span class="block group-open:hidden">
+						{hasIconClosed ? <slot name="icon-closed" /> : <IconChevronDownCircled />}
+					</span>
+					<span class="hidden group-open:block">
+						{hasIconOpen ? <slot name="icon-open" /> : <IconChevronUpCircled />}
+					</span>
+				)}
+			</span>
+		)}
+	</summary>
+
+	<div class:list={[floatingContentClasses, detailsClasses]}>
+		<slot />
+	</div>
+</details>
+
+<script>
+	/**
+	 * Initialises all summary-details instances on the page, wiring up keyboard
+	 * and click-outside behaviour and exposing openDetails / closeDetails on the
+	 * host element.
+	 */
+	function initialiseSummaryDetails(detailsElement: HTMLDetailsElement): void {
+		const summaryElement = detailsElement.querySelector<HTMLElement>("summary");
+
+		const closeWithEscape = detailsElement.dataset.closeWithEscape === "true";
+		const closeWithClickOutside = detailsElement.dataset.closeWithClickOutside === "true";
+		const floating = detailsElement.dataset.floating === "true";
+
+		/**
+		 * Open the details element.
+		 */
+		function openDetails(): void {
+			detailsElement.open = true;
+
+			if (floating) {
+				detailsElement.classList.add("z-50");
+			}
+
+			emitOpenEvent();
+		}
+
+		/**
+		 * Close the details element.
+		 */
+		function closeDetails(): void {
+			detailsElement.open = false;
+
+			if (floating) {
+				detailsElement.classList.remove("z-50");
+			}
+
+			emitCloseEvent();
+		}
+
+		/**
+		 * Trigger a bubbling open event, which can be monitored by parent
+		 * components.
+		 */
+		function emitOpenEvent() {
+			detailsElement.dispatchEvent(new CustomEvent("details:open", { bubbles: true }));
+		}
+
+		/**
+		 * Trigger a bubbling close event, which can be monitored by parent
+		 * components.
+		 */
+		function emitCloseEvent() {
+			detailsElement.dispatchEvent(new CustomEvent("details:close", { bubbles: true }));
+		}
+
+		// Expose methods on the element for external callers.
+		(detailsElement as any).openDetails = openDetails;
+		(detailsElement as any).closeDetails = closeDetails;
+
+		// Emit open/close events and manage z-index when the browser toggles the
+		// element directly (e.g. when the user clicks on the summary).
+		detailsElement.addEventListener("toggle", () => {
+			if (floating) {
+				detailsElement.classList.toggle("z-50", detailsElement.open);
+			}
+
+			if (detailsElement.open) {
+				emitOpenEvent();
+			} else {
+				emitCloseEvent();
+			}
+		});
+
+		// Allow the summary-details element to be closed with the escape key.
+		if (closeWithEscape) {
+			document.addEventListener("keydown", (event: KeyboardEvent) => {
+				if (event.key !== "Escape" || !detailsElement.open) {
+					return;
+				}
+
+				event.preventDefault();
+
+				closeDetails();
+
+				// Move focus to the summary element, if focus was inside the component.
+				if (detailsElement.contains(document.activeElement) && summaryElement) {
+					summaryElement.focus();
+				}
+			});
+		}
+
+		// Allow the summary-details element to be closed by clicking anywhere
+		// outside of it.
+		if (closeWithClickOutside) {
+			document.addEventListener("click", (event: MouseEvent) => {
+				if (!detailsElement.open) {
+					return;
+				}
+
+				if (!detailsElement.contains(event.target as Node)) {
+					closeDetails();
+				}
+			});
+		}
+	}
+
+	// Initialise all instances present in the DOM at load time, and any added
+	// later (e.g. via view transitions or dynamic rendering).
+	document.querySelectorAll<HTMLDetailsElement>("details[data-summary-details]").forEach(initialiseSummaryDetails);
+
+	document.addEventListener("astro:page-load", () => {
+		document.querySelectorAll<HTMLDetailsElement>("details[data-summary-details]").forEach(initialiseSummaryDetails);
+	});
+</script>

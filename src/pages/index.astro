@@ -3,21 +3,45 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import { getSortedBlogPosts } from "@/helpers/posts";
 
 import BlogPostPreview from "@/components/blog/blog-post-preview.astro";
+import DoodleBoosterLeft from "@/components/doodles/doodle-booster-left.astro";
+import DoodleBoosterRight from "@/components/doodles/doodle-booster-right.astro";
+import IconWave from "@/components/icons/icon-wave.astro";
 import Page from "@/layouts/Page.astro";
+import SummaryDetails from "@/components/content/summary-details.astro"
 
 const posts = await getSortedBlogPosts();
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<h1 class="sr-only">The blog of Lewis Howles</h1>
+	<div class="grid grid-cols-[1fr_20rem] gap-22">
+		<div>
+			<h1 class="sr-only">The blog of Lewis Howles</h1>
 
-	<section class="flex flex-col gap-12">
-		<h2 class="sr-only">Recent articles</h2>
+			<section class="flex flex-col gap-12">
+				<h2 class="sr-only">Recent articles</h2>
 
-		{
-			posts.map(post => (
-				<BlogPostPreview post={post} />
-			))
-		}
-	</section>
+				{posts.map(post => <BlogPostPreview post={post} />)}
+			</section>
+		</div>
+
+		<div>
+			<div class="gradient-background long-shadow p-6 rounded-xl text-white flex flex-col gap-6 relative">
+				<h3 class="flex items-center gap-2">Hi, I’m Lewis <IconWave /></h3>
+
+				<p>I’m a passionate, versatile UI/UX Developer and Designer, with over 15 years experience spanning UI Design, Front-end Development, Web Design, Graphic Design, Accessibility, and, historically, Backend Development.</p>
+
+				<SummaryDetails summaryClasses="text-current" detailsClasses="flex flex-col gap-4" iconAtStart={true}>
+					<span slot="summary">
+						Show more
+					</span>
+
+					<p>Writing a blog is something I've thought about on and off for some time. Though I don't expect it to attract a large following, at least it's a good place to organise my thoughts and give a little insight into how my brain works.</p>
+					<p>For more information about me, take a look at my primary website, <a href="https://howles.dev" class="text-current">https://howles.dev</a></p>
+				</SummaryDetails>
+
+				<DoodleBoosterLeft class="size-auto text-indigo-700 absolute top-0 mt-11 right-full" />
+				<DoodleBoosterRight class="size-auto text-indigo-700 absolute top-0 mt-11 left-full" />
+			</div>
+		</div>
+	</div>
 </Page>
