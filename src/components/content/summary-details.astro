@@ -166,12 +166,22 @@ if (floating) {
 </details>
 
 <script>
+	// Tracks elements that have already been set up, preventing duplicate
+	// listeners.
+	const initialisedElements = new WeakSet<HTMLDetailsElement>();
+
 	/**
 	 * Initialises all summary-details instances on the page, wiring up keyboard
 	 * and click-outside behaviour and exposing openDetails / closeDetails on the
 	 * host element.
 	 */
 	function initialiseSummaryDetails(detailsElement: HTMLDetailsElement): void {
+		// Skip elements that have already been initialised.
+		if (initialisedElements.has(detailsElement)) {
+			return;
+		}
+
+		initialisedElements.add(detailsElement);
 		const summaryElement = detailsElement.querySelector<HTMLElement>("summary");
 
 		const closeWithEscape = detailsElement.dataset.closeWithEscape === "true";
