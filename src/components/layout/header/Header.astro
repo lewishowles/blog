@@ -10,6 +10,8 @@ import Logo from "@/components/layout/logo.astro";
 import { SITE_TITLE } from "@/consts";
 ---
 
+<a href="#main" class="absolute -top-full inset-s-4 px-4 py-2 rounded focus-visible:top-0">Skip to main content</a>
+
 <header class="bg-linear-to-b from-blue-200 to-blue-300 pt-10 mb-11 w-full overflow-hidden dark:from-indigo-950 dark:to-indigo-900">
 	<nav class="flex items-center gap-6 max-w-260 mx-auto px-8 mb-1">
 		<a href="/" class="relative">
@@ -19,17 +21,17 @@ import { SITE_TITLE } from "@/consts";
 			<DoodleHi class="size-auto text-colour-link absolute inset-s-full inset-be-full ms-2.5 -mb-2" />
 		</a>
 
-		<div class="ms-auto flex items-center gap-6">
-			<a href="https://howles.dev" class="rounded group">
+		<div class="ms-auto flex items-center gap-2">
+			<a href="https://howles.dev" class="rounded p-2 group">
 				<span class="sr-only">Visit the "howles.dev" website.</span>
-				<IconGlasses class="w-7 h-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+				<IconGlasses class="w-7 h-4.5 animate-stroke-hover motion-safe:group-hover:-translate-y-0.5 transition-transform" />
 			</a>
 
 			<ThemeToggle />
 
-			<a href="/rss.xml" class="rounded group">
+			<a href="/rss.xml" class="rounded p-2 group">
 				<span class="sr-only">View RSS feed</span>
-				<IconRSS class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+				<IconRSS class="size-4.5 animate-stroke-hover motion-safe:group-hover:-translate-y-0.5 transition-transform" />
 			</a>
 		</div>
 	</nav>

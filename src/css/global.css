@@ -126,7 +126,7 @@
 		width: 1em;
 	}
 
-	a, button, summary, [contenteditable], [tabindex] {
+	a, button, summary, [contenteditable], [tabindex]:not(#main) {
 		@apply transition-all;
 		@apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-800 focus-visible:ring-offset-2;
 		@apply dark:focus-visible:ring-indigo-400 dark:focus-visible:ring-offset-0;

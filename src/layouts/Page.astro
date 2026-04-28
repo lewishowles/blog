@@ -13,10 +13,10 @@ const { title = "", description = "" } = Astro.props;
 
 		<slot name="head" />
 	</head>
-	<body class="bg-white text-grey-600 dark:bg-indigo-950 dark:text-grey-50 transition-colors">
+	<body class="bg-white text-grey-600 dark:bg-indigo-950 dark:text-grey-50">
 		<Header />
 
-		<main class="max-w-260 mx-auto px-8">
+		<main id="main" class="max-w-260 mx-auto px-8" tabindex="-1">
 			<slot />
 		</main>
 
