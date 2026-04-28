@@ -1,3 +1,13 @@
+.header-grid {
+	grid-area: 1 / 1;
+	width: auto;
+	min-width: calc(100% + 4rem);
+	height: 420px;
+	margin-inline-start: 50%;
+	translate: -50% 0;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
 	/**
 	 * Animate cloud layers to fade in, and move very slowly.
@@ -10,12 +20,6 @@
 		animation-fill-mode: forwards;
 		animation-iteration-count: infinite, 1;
 		animation-name: cloudDrift, fadeIn;
-
-		height: calc(var(--spacing) * 55);
-		margin-inline-start: -50%;
-		min-width: calc(100% + 4rem);
-		translate: -50% 0;
-		width: auto;
 	}
 
 	.cloud-layer-back {

@@ -7,13 +7,19 @@ import CloudLayerBack from "@/components/layout/header/cloud-layer-back.astro";
 import CloudLayerFront from "@/components/layout/header/cloud-layer-front.astro";
 import CloudLayerMiddle from "@/components/layout/header/cloud-layer-middle.astro";
 import Logo from "@/components/layout/logo.astro";
+import StarField from "@/components/layout/header/star-field.astro";
 import { SITE_TITLE } from "@/consts";
 ---
 
 <a href="#main" class="absolute -top-full inset-s-4 px-4 py-2 rounded focus-visible:top-0">Skip to main content</a>
 
-<header class="bg-linear-to-b from-blue-200 to-blue-300 pt-10 mb-11 w-full overflow-hidden dark:from-indigo-950 dark:to-indigo-900">
-	<nav class="flex items-center gap-6 max-w-260 mx-auto px-8 mb-1">
+<header class="grid overflow-hidden bg-linear-to-b h-95 from-blue-200 to-blue-300 mb-11 dark:from-indigo-950 dark:to-indigo-900">
+	<StarField class="header-grid opacity-0 transition-opacity dark:opacity-100" />
+	<CloudLayerBack class="header-grid cloud-layer cloud-layer-back text-[#C2E8FC] dark:text-[#383667]" />
+	<CloudLayerMiddle class="header-grid cloud-layer cloud-layer-middle text-[#D8EFFB] dark:text-[#4C4A74]" />
+	<CloudLayerFront class="header-grid cloud-layer cloud-layer-front text-white dark:text-indigo-950" />
+
+	<nav class="[grid-area:1/1] z-10 w-full pt-10 flex items-center gap-6 max-w-260 mx-auto px-8 self-start">
 		<a href="/" class="relative">
 			<span class="sr-only">{SITE_TITLE}</span>
 
@@ -35,10 +41,4 @@ import { SITE_TITLE } from "@/consts";
 			</a>
 		</div>
 	</nav>
-
-	<div class="translate-y-11">
-		<CloudLayerBack class="cloud-layer cloud-layer-back text-[#C2E8FC] dark:text-[#383667]" />
-		<CloudLayerMiddle class="cloud-layer cloud-layer-middle text-[#D8EFFB] -mt-44 dark:text-[#4C4A74]" />
-		<CloudLayerFront class="cloud-layer cloud-layer-front text-white -mt-40 dark:text-indigo-950" />
-	</div>
 </header>

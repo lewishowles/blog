@@ -1,11 +1,13 @@
 ---
-import HillLayerBack from "@/components/layout/footer/hill-layer-back.astro"
-import HillLayerMiddle from "@/components/layout/footer/hill-layer-middle.astro"
-import HillLayerFront from "@/components/layout/footer/hill-layer-front.astro"
-import IconExternal from "@/components/icons/icon-external.astro"
+import DoodleBirdsNight from "@/components/doodles/footer/doodle-birds-night.astro"
 import DoodleBirds from "@/components/doodles/footer/doodle-birds.astro"
 import DoodleFence from "@/components/doodles/footer/doodle-fence.astro"
+import DoodleSheepSleeping from "@/components/doodles/footer/doodle-sheep-sleeping.astro"
 import DoodleSheep from "@/components/doodles/footer/doodle-sheep.astro"
+import IconExternal from "@/components/icons/icon-external.astro"
+import HillLayerBack from "@/components/layout/footer/hill-layer-back.astro"
+import HillLayerFront from "@/components/layout/footer/hill-layer-front.astro"
+import HillLayerMiddle from "@/components/layout/footer/hill-layer-middle.astro"
 
 const today = new Date();
 ---
@@ -15,8 +17,10 @@ const today = new Date();
 	<HillLayerMiddle class="text-[#A4BD8A] footer-grid dark:text-[#11102D]" />
 	<HillLayerFront class="text-[#BDCFAA] footer-grid dark:text-[#141334]" />
 	<DoodleFence class="text-colour-link footer-grid" />
-	<DoodleSheep class="text-colour-link footer-grid" />
-	<DoodleBirds class="text-colour-link footer-grid" />
+	<DoodleSheep class="text-colour-link footer-grid transition-opacity dark:opacity-0" />
+	<DoodleSheepSleeping class="text-colour-link footer-grid opacity-0 transition-opacity dark:opacity-100" />
+	<DoodleBirds class="text-colour-link footer-grid transition-opacity dark:opacity-0" />
+	<DoodleBirdsNight class="text-colour-link footer-grid opacity-0 transition-opacity dark:opacity-100" />
 
 	<div class="[grid-area:1/1] z-10 w-full max-w-260 px-8 pb-10 mx-auto flex flex-col justify-end">
 		<p class="text-sm text-green-950 dark:text-indigo-200">&copy; {today.getFullYear()} &middot; <span class="font-bold">Lewis Howles</span></p>
