@@ -4,6 +4,8 @@ import DoodleBirds from "@/components/doodles/footer/doodle-birds.astro"
 import DoodleFence from "@/components/doodles/footer/doodle-fence.astro"
 import DoodleSheepSleeping from "@/components/doodles/footer/doodle-sheep-sleeping.astro"
 import DoodleSheep from "@/components/doodles/footer/doodle-sheep.astro"
+import DoodleSignGithub from "@/components/doodles/footer/doodle-sign-github.astro"
+import DoodleSignLinkedin from "@/components/doodles/footer/doodle-sign-linkedin.astro"
 import IconExternal from "@/components/icons/icon-external.astro"
 import HillLayerBack from "@/components/layout/footer/hill-layer-back.astro"
 import HillLayerFront from "@/components/layout/footer/hill-layer-front.astro"
@@ -22,8 +24,23 @@ const today = new Date();
 	<DoodleBirds class="text-colour-link footer-grid transition-opacity dark:opacity-0" />
 	<DoodleBirdsNight class="text-colour-link footer-grid opacity-0 transition-opacity dark:opacity-100" />
 
-	<div class="[grid-area:1/1] z-10 w-full max-w-260 px-8 pb-10 mx-auto flex flex-col justify-end">
-		<p class="text-sm text-green-950 dark:text-indigo-200">&copy; {today.getFullYear()} &middot; <span class="font-bold">Lewis Howles</span></p>
-		<p class="text-xs text-green-900 text-balance dark:text-indigo-300">Welcome to the footer! &middot; While you’re here, why not <a href="https://howles.dev" class="inline-flex gap-1 items-center text-current">learn more about me <IconExternal /></a></p>
+	<div class="[grid-area:1/1] z-10 w-full max-w-260 px-8 pb-10 mx-auto flex flex-col gap-4 justify-end lg:flex-row lg:items-end lg:justify-between">
+		<div class="flex flex-col justify-end">
+			<p class="text-sm text-green-950 dark:text-indigo-200">&copy; {today.getFullYear()} &middot; <span class="font-bold">Lewis Howles</span></p>
+			<p class="text-xs text-green-900 text-balance dark:text-indigo-300">Welcome to the footer! &middot; While you’re here, why not <a href="https://howles.dev" class="inline-flex gap-1 items-center text-current">learn more about me <IconExternal /></a></p>
+		</div>
+
+		<ul class="flex gap-4">
+			<li>
+				<a href="https://github.com/lewishowles" target="_blank">
+					<DoodleSignGithub class="text-colour-link size-auto" />
+				</a>
+			</li>
+			<li>
+				<a href="https://www.linkedin.com/in/lewishowles/" target="_blank">
+					<DoodleSignLinkedin class="text-colour-link size-auto" />
+				</a>
+			</li>
+		</ul>
 	</div>
 </footer>

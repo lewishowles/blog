@@ -1,0 +1,25 @@
+---
+const { class: className } = Astro.props;
+---
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 55 62"
+	width="55"
+	height="62"
+	fill="none"
+	stroke="currentColor"
+	stroke-width="3"
+	stroke-linejoin="round"
+	stroke-linecap="round"
+	class:list={["doodle", className]}
+	aria-hidden="true"
+>
+	<path pathLength="1" d="M27.493 56V43m6.122 13.167L33.493 43m-8.925 16.536.481-6.064L31.493 59l1-2 3 2m-30-55-4 5 3 35 46-2 3-5" />
+	<path pathLength="1" d="m8.493 39 45-2-.318-9.066-3.154-2.694 2.818-3.188L51.493 2l-46 2zm-4 5 4-5" />
+
+	<g transform="translate(22.493 12)">
+		<path pathLength="1" d="M7.08 8v8M7 12a4 4 0 1 1 8 0v4M1.68 8v8" />
+		<circle cx="1.5" cy="1.5" r="1.5" fill="currentColor" stroke="none" />
+	</g>
+</svg>
