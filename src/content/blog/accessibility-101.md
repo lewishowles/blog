@@ -1,7 +1,7 @@
 ---
-title: 'First post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
+title: 'Accessibility 101'
+description: ''
+pubDate: 'Apri 28 2026'
 heroImage: '@/assets/blog-placeholder.jpg'
 ---
 
