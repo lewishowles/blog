@@ -1,29 +1,31 @@
+---
+import { storageKey } from "@/helpers/theme";
+---
 
-<script is:inline>
+<script is:inline define:vars={{ storageKey }}>
 	(() => {
-		const storageKey = "howles:colour-scheme";
+		/**
+		 * Determine whether the system settings currently prefer dark mode.
+		 *
+		 * @returns  {boolean}
+		 */
+		function systemPrefersDark() {
+			return window.matchMedia("(prefers-color-scheme: dark)").matches;
+		}
 
 		/**
-		 * Determine the current theme, as stored in localStorage, if present.
+		 * Read the stored theme from localStorage, returning null if absent or
+		 * unavailable.
 		 *
 		 * @returns  {string|null}
 		 */
 		function getStoredTheme() {
 			try {
 				return localStorage.getItem(storageKey);
-			} catch (error) {
+			} catch {
 				return null;
 			}
-		};
-
-		/**
-		 * Determine whether the system settings current prefer dark mode.
-		 *
-		 * @returns  {boolean}
-		 */
-		function systemPrefersDark() {
-			return window.matchMedia("(prefers-color-scheme: dark)").matches;
-		};
+		}
 
 		/**
 		 * Combine any stored theme and system preference to determine the
@@ -31,7 +33,7 @@
 		 *
 		 * @returns  {"light"|"dark"}
 		 */
-		const getCurrentTheme = () => {
+		function getCurrentTheme() {
 			const storedTheme = getStoredTheme();
 
 			if (storedTheme !== null) {
@@ -43,7 +45,7 @@
 			}
 
 			return "light";
-		};
+		}
 
 		document.documentElement.classList.toggle("dark", getCurrentTheme() === "dark");
 	})();

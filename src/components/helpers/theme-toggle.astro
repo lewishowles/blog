@@ -1,0 +1,63 @@
+---
+import IconMoon from "@/components/icons/icon-moon.astro";
+import IconSun from "@/components/icons/icon-sun.astro";
+---
+
+<button type="button" class="text-colour-link rounded group dark:hidden" data-theme-toggle data-theme-is-light>
+	<span class="sr-only">Activate dark mode</span>
+	<IconSun class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+</button>
+
+<button type="button" class="text-colour-link rounded group hidden dark:block" data-theme-toggle data-theme-is-dark>
+	<span class="sr-only">Activate light mode</span>
+	<IconMoon class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
+</button>
+
+<script>
+	import { storageKey } from "@/helpers/theme";
+
+	/**
+	 * Read the current theme from the root element, which will have been set by
+	 * theme-initialisation before any content renders.
+	 *
+	 * @returns
+	 *     The current theme, either "light", or "dark".
+	 */
+	function getCurrentTheme(): "light" | "dark" {
+		return document.documentElement.classList.contains("dark") ? "dark" : "light";
+	}
+
+	/**
+	 * Apply a theme by updating the root class and persisting the choice.
+	 *
+	 * @param  theme
+	 *     The current theme to set.
+	 */
+	function setTheme(theme: "light" | "dark"): void {
+		document.documentElement.classList.toggle("dark", theme === "dark");
+
+		try {
+			localStorage.setItem(storageKey, theme);
+
+			const newButton = document.querySelector<HTMLElement>(`[data-theme-is-${theme}]`)
+
+			if (!newButton) {
+				return;
+			}
+
+			newButton.focus();
+		} catch {}
+	}
+
+	// Use event delegation so this works across view transitions without
+	// needing re-initialisation.
+	document.addEventListener("click", (event: MouseEvent) => {
+		if (!(event.target as Element).closest("[data-theme-toggle]")) {
+			return;
+		}
+
+		const current = getCurrentTheme();
+
+		setTheme(current === "dark" ? "light" : "dark");
+	});
+</script>

@@ -1,0 +1,8 @@
+.footer-grid {
+	grid-area: 1 / 1;
+	width: auto;
+	min-width: calc(100% + 4rem);
+	height: 457px;
+	margin-inline-start: 50%;
+	translate: -50% 0;
+}

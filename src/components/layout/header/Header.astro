@@ -1,9 +1,8 @@
 ---
 import DoodleHi from "@/components/doodles/doodle-hi.astro";
 import IconGlasses from "@/components/icons/icon-glasses.astro";
-import IconMoon from "@/components/icons/icon-moon.astro";
 import IconRSS from "@/components/icons/icon-rss.astro";
-import IconSun from "@/components/icons/icon-sun.astro";
+import ThemeToggle from "@/components/helpers/theme-toggle.astro"
 import CloudLayerBack from "@/components/layout/header/cloud-layer-back.astro";
 import CloudLayerFront from "@/components/layout/header/cloud-layer-front.astro";
 import CloudLayerMiddle from "@/components/layout/header/cloud-layer-middle.astro";
@@ -11,13 +10,13 @@ import Logo from "@/components/layout/logo.astro";
 import { SITE_TITLE } from "@/consts";
 ---
 
-<header class="bg-linear-to-b from-blue-200 to-blue-300 pt-10 mb-11 w-full overflow-hidden">
+<header class="bg-linear-to-b from-blue-200 to-blue-300 pt-10 mb-11 w-full overflow-hidden dark:from-indigo-950 dark:to-indigo-900">
 	<nav class="flex items-center gap-6 max-w-260 mx-auto px-8 mb-1">
 		<a href="/" class="relative">
 			<span class="sr-only">{SITE_TITLE}</span>
 
 			<Logo class="w-9.5 h-12" />
-			<DoodleHi class="size-auto text-indigo-700 absolute inset-s-full inset-be-full ms-2.5 -mb-2" />
+			<DoodleHi class="size-auto text-colour-link absolute inset-s-full inset-be-full ms-2.5 -mb-2" />
 		</a>
 
 		<div class="ms-auto flex items-center gap-6">
@@ -26,15 +25,7 @@ import { SITE_TITLE } from "@/consts";
 				<IconGlasses class="w-7 h-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
 			</a>
 
-			<button type="button" class="link-colours rounded group">
-				<span class="sr-only">Activate dark mode</span>
-				<IconSun class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
-			</button>
-
-			<button type="button" class="link-colours rounded group">
-				<span class="sr-only">Activate light mode</span>
-				<IconMoon class="size-4.5 animate-stroke-hover motion-safe:group-hocus:-translate-y-0.5 transition-transform" />
-			</button>
+			<ThemeToggle />
 
 			<a href="/rss.xml" class="rounded group">
 				<span class="sr-only">View RSS feed</span>
@@ -44,8 +35,8 @@ import { SITE_TITLE } from "@/consts";
 	</nav>
 
 	<div class="translate-y-11">
-		<CloudLayerBack class="cloud-layer-back text-[#C2E8FC] w-auto min-w-[calc(100%+4rem)] h-55 ms-[50%] -translate-x-1/2" />
-		<CloudLayerMiddle class="cloud-layer-middle text-[#D8EFFB] -mt-44 w-auto min-w-[calc(100%+4rem)] h-55 ms-[50%] -translate-x-1/2" />
-		<CloudLayerFront class="cloud-layer-front text-white -mt-40 w-auto min-w-[calc(100%+4rem)] h-55 ms-[50%] -translate-x-1/2" />
+		<CloudLayerBack class="cloud-layer cloud-layer-back text-[#C2E8FC] dark:text-[#383667]" />
+		<CloudLayerMiddle class="cloud-layer cloud-layer-middle text-[#D8EFFB] -mt-44 dark:text-[#4C4A74]" />
+		<CloudLayerFront class="cloud-layer cloud-layer-front text-white -mt-40 dark:text-indigo-950" />
 	</div>
 </header>

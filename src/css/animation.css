@@ -1,36 +1,41 @@
-.animate-delay-75 {
-	animation-delay: 75ms;
-}
-
-.animate-delay-100 {
-	animation-delay: 100ms;
-}
-
-.animate-delay-150 {
-	animation-delay: 150ms;
-}
-
-.animate-delay-200 {
-	animation-delay: 200ms;
-}
-
-.animate-delay-300 {
-	animation-delay: 300ms;
-}
-
-.animate-delay-500 {
-	animation-delay: 500ms;
-}
-
-.animate-delay-700 {
-	animation-delay: 700ms;
-}
-
-.animate-delay-1000 {
-	animation-delay: 1s;
+.show-on-hover {
+	@apply opacity-0 motion-safe:-translate-x-1 motion-safe:transition-all;
+	@apply group-hocus:opacity-100 motion-safe:group-hocus:translate-x-0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
+	.animate-delay-75 {
+		animation-delay: 75ms;
+	}
+
+	.animate-delay-100 {
+		animation-delay: 100ms;
+	}
+
+	.animate-delay-150 {
+		animation-delay: 150ms;
+	}
+
+	.animate-delay-200 {
+		animation-delay: 200ms;
+	}
+
+	.animate-delay-300 {
+		animation-delay: 300ms;
+	}
+
+	.animate-delay-500 {
+		animation-delay: 500ms;
+	}
+
+	.animate-delay-700 {
+		animation-delay: 700ms;
+	}
+
+	.animate-delay-1000 {
+		animation-delay: 1s;
+	}
+
 	.animate-fast {
 		--animation-duration: 150ms;
 	}
@@ -186,34 +191,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	/**
-	 * Animate cloud layers to fade in, and move very slowly.
-	 */
-	.cloud-layer-back, .cloud-layer-middle, .cloud-layer-front {
-		opacity: 0;
-		animation-timing-function: linear, ease-in-out;
-		animation-duration: 20s, 1s;
-		animation-direction: alternate;
-		animation-fill-mode: forwards;
-		animation-iteration-count: infinite, 1;
-		animation-name: cloudDrift, fadeIn;
-	}
-
-	.cloud-layer-back {
-		--cloud-drift-distance: 1rem;
-	}
-
-	.cloud-layer-middle {
-		--cloud-drift-distance: 2.5rem;
-	}
-
-	.cloud-layer-front {
-		--cloud-drift-distance: 5rem;
-
-		opacity: 1;
-		animation-name: cloudDrift;
-	}
-
 	@keyframes cloudDrift {
 		from {
 			translate: calc(-50% + calc(var(--cloud-drift-distance) * 0.5)) 0;
@@ -229,17 +206,12 @@
 	 * hovering over their parent.
 	 */
 	.animate-stroke-hover [pathLength] {
-		stroke: var(--color-pink-800);
 		stroke-dasharray: 1;
 		stroke-dashoffset: 1;
 		transition: stroke-dashoffset 500ms ease, fill 500ms ease;
 	}
 
 	:is(a, button):is(:hover, :focus-visible) {
-		&:has(.animate-stroke-hover) {
-			color: var(--color-indigo-800);
-		}
-
 		& > .animate-stroke-hover:has([pathLength]) {
 			& > [pathLength] {
 				stroke-dashoffset: 0;
@@ -272,7 +244,7 @@
 		}
 
 		:is(a, button):hover > &, :is(a, button):focus-visible > & {
-			color: var(--color-pink-800);
+			color: var(--link-hocus-colour);
 			transform: rotate(5deg);
 		}
 	}
@@ -286,20 +258,6 @@
 	@keyframes doodle-fill {
 		to {
 			fill: currentColor;
-		}
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.animate-stroke-hover [pathLength] {
-		:hover, :focus-visible {
-			& > [pathLength] {
-				stroke: var(--color-pink-800)
-			}
-
-			& > path[fill] {
-				fill: var(--color-pink-800);
-			}
 		}
 	}
 }

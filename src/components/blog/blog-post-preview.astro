@@ -8,9 +8,9 @@ const { post } = Astro.props;
 
 <article class="flex flex-col gap-4">
 	<div class="flex flex-col gap-2">
-		<h3 class="text-3xl text-grey-950 font-bold">
-			<a href={`/${post.id}/`} class="text-current subtle-link transition-colors group relative" tabindex="-1">
-				<DoodleRandomFrill class="hidden text-indigo-700 size-auto absolute right-full top-0 -mt-4 lg:block" />
+		<h3 class="text-3xl font-bold">
+			<a href={`/${post.id}/`} class="text-colour-title subtle-link transition-colors group relative" tabindex="-1">
+				<DoodleRandomFrill class="hidden text-colour-link size-auto absolute right-full top-0 -mt-4 lg:block" />
 
 				{post.data.title}
 
@@ -20,7 +20,7 @@ const { post } = Astro.props;
 
 		<dl class="flex gap-4 text-sm">
 			<div class="flex gap-2">
-				<dt class="italic text-grey-500">Published</dt>
+				<dt class="italic text-colour-muted">Published</dt>
 				<dd class="font-semibold"><FormattedDate date={post.data.pubDate} /></dd>
 			</div>
 		</dl>

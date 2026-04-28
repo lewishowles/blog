@@ -6,7 +6,7 @@
 	box-shadow: calc(var(--spacing) * 4) calc(var(--spacing) * 4) 0 oklch(0 none none / 0.04);
 }
 
-.link-colours {
+.text-colour-link {
 	color: var(--link-base-colour);
 
 	&:hover, &:focus-visible {
@@ -15,8 +15,8 @@
 }
 
 .subtle-link {
+	color: currentColor;
 	text-decoration: none;
-	transition: color var(--default-transition-duration);
 
 	&:hover, &:focus-visible {
 		color: var(--link-hocus-colour);
@@ -24,7 +24,10 @@
 	}
 }
 
-.show-on-hover {
-	@apply opacity-0 motion-safe:-translate-x-1 motion-safe:transition-all;
-	@apply group-hocus:opacity-100 motion-safe:group-hocus:translate-x-0;
+.text-colour-title {
+	color: var(--text-colour-title);
+}
+
+.text-colour-muted {
+	color: var(--text-colour-muted);
 }

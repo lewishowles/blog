@@ -1,0 +1,45 @@
+@media (prefers-reduced-motion: no-preference) {
+	/**
+	 * Animate cloud layers to fade in, and move very slowly.
+	 */
+	.cloud-layer {
+		opacity: 0;
+		animation-timing-function: linear, ease-in-out;
+		animation-duration: 20s, 1s;
+		animation-direction: alternate;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite, 1;
+		animation-name: cloudDrift, fadeIn;
+
+		height: calc(var(--spacing) * 55);
+		margin-inline-start: -50%;
+		min-width: calc(100% + 4rem);
+		translate: -50% 0;
+		width: auto;
+	}
+
+	.cloud-layer-back {
+		--cloud-drift-distance: 1rem;
+	}
+
+	.cloud-layer-middle {
+		--cloud-drift-distance: 2.5rem;
+	}
+
+	.cloud-layer-front {
+		--cloud-drift-distance: 5rem;
+
+		opacity: 1;
+		animation-name: cloudDrift;
+	}
+
+	@keyframes cloudDrift {
+		from {
+			translate: calc(-50% + calc(var(--cloud-drift-distance) * 0.5)) 0;
+		}
+
+		to {
+			translate: calc(-50% - calc(var(--cloud-drift-distance) * 0.5)) 0;
+		}
+	}
+}

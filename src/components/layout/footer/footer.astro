@@ -11,15 +11,15 @@ const today = new Date();
 ---
 
 <footer class="grid mt-40 overflow-hidden">
-	<HillLayerBack class="text-[#97B37A] [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
-	<HillLayerMiddle class="text-[#A4BD8A] [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
-	<HillLayerFront class="text-[#BDCFAA] [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
-	<DoodleFence class="text-indigo-700 [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
-	<DoodleSheep class="text-indigo-700 [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
-	<DoodleBirds class="text-indigo-700 [grid-area:1/1] w-auto min-w-[calc(100%+4rem)] h-114.25 ms-[50%] -translate-x-1/2" />
+	<HillLayerBack class="text-[#97B37A] footer-grid dark:text-[#0D0C22]" />
+	<HillLayerMiddle class="text-[#A4BD8A] footer-grid dark:text-[#11102D]" />
+	<HillLayerFront class="text-[#BDCFAA] footer-grid dark:text-[#141334]" />
+	<DoodleFence class="text-colour-link footer-grid" />
+	<DoodleSheep class="text-colour-link footer-grid" />
+	<DoodleBirds class="text-colour-link footer-grid" />
 
 	<div class="[grid-area:1/1] z-10 w-full max-w-260 px-8 pb-10 mx-auto flex flex-col justify-end">
-		<p class="text-sm text-green-950">&copy; {today.getFullYear()} &middot; <span class="font-bold">Lewis Howles</span></p>
-		<p class="text-xs text-green-900 text-balance">Welcome to the footer! &middot; While you’re here, why not <a href="https://howles.dev" class="inline-flex gap-1 items-center text-current">learn more about me <IconExternal /></a></p>
+		<p class="text-sm text-green-950 dark:text-indigo-200">&copy; {today.getFullYear()} &middot; <span class="font-bold">Lewis Howles</span></p>
+		<p class="text-xs text-green-900 text-balance dark:text-indigo-300">Welcome to the footer! &middot; While you’re here, why not <a href="https://howles.dev" class="inline-flex gap-1 items-center text-current">learn more about me <IconExternal /></a></p>
 	</div>
 </footer>

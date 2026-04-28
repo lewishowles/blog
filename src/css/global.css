@@ -1,6 +1,8 @@
 @import "./font.css" layer(base);
 @import "./utilities.css" layer(utilities);
 @import "./animation.css" layer(utilities);
+@import "./header.css" layer(components);
+@import "./footer.css" layer(components);
 
 @import "tailwindcss";
 
@@ -100,16 +102,8 @@
 
 		--link-base-colour: var(--color-indigo-800);
 		--link-hocus-colour: var(--color-pink-800);
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--logo-gradient-start: currentColor;
-			--logo-gradient-end: currentColor;
-
-			--link-base-colour: var(--color-indigo-300);
-			--link-hocus-colour: var(--color-pink-300);
-		}
+		--text-colour-title: var(--color-grey-950);
+		--text-colour-muted: var(--colour-grey-500);
 	}
 
 	.dark {
@@ -118,6 +112,13 @@
 
 		--link-base-colour: var(--color-indigo-300);
 		--link-hocus-colour: var(--color-pink-300);
+		--text-colour-title: var(--color-grey-50);
+		--text-colour-muted: var(--color-grey-400);
+	}
+
+	* {
+		transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+		transition-duration: 500ms;
 	}
 
 	svg {
