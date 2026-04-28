@@ -1,0 +1,24 @@
+---
+import DoodleBoosterLeft from "@/components/doodles/doodle-booster-left.astro";
+import DoodleBoosterRight from "@/components/doodles/doodle-booster-right.astro";
+import IconWave from "@/components/icons/icon-wave.astro";
+import SummaryDetails from "@/components/content/summary-details.astro"
+---
+
+<div class="gradient-background long-shadow p-6 rounded-xl text-white flex flex-col gap-6 relative">
+	<h3 class="flex items-center gap-2">Hi, I’m Lewis <IconWave /></h3>
+
+	<p>I’m a passionate, versatile UI/UX Developer and Designer, with over 15 years experience spanning UI Design, Front-end Development, Web Design, Graphic Design, Accessibility, and, historically, Backend Development.</p>
+
+	<SummaryDetails summaryClasses="rounded text-current" detailsClasses="flex flex-col gap-4 mt-4" iconAtStart={true}>
+		<span slot="summary">
+			Show more
+		</span>
+
+		<p>I've always loved sharing my knowledge and experience with others, and writing a blog is something I've thought about on and off for some time. At the very least, it's a good place to organise my thoughts and give a little insight into how my brain works.</p>
+		<p>For more information about me, take a look at my primary website, <a href="https://howles.dev" class="text-current">https://howles.dev</a></p>
+	</SummaryDetails>
+
+	<DoodleBoosterLeft class="size-auto text-indigo-700 absolute top-0 mt-11 right-full hidden lg:block" />
+	<DoodleBoosterRight class="size-auto text-indigo-700 absolute top-0 mt-11 left-full hidden lg:block" />
+</div>
