@@ -1,35 +1,51 @@
 ---
+import type { MarkdownHeading } from "astro";
 import type { CollectionEntry } from "astro:content";
 
+import TableOfContents from "@/components/blog/table-of-contents.astro";
 import FormattedDate from "@/components/helpers/formatted-date.astro";
-import Page from "@/layouts/Page.astro";
+import Page from "@/layouts/page.astro";
 import { Image } from "astro:assets";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, headings, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Page title={title} description={description}>
-	<article>
-		<div class="hero-image">
-			{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-		</div>
-
-		<div class="prose">
-			<h1>{title}</h1>
-
+	<article class="prose prose-slate dark:prose-invert max-w-none">
+		<div class="flex gap-4 mb-2 text-grey-500">
 			<FormattedDate date={pubDate} />
 
 			{
 				updatedDate && (
+					<span>•</span>
+
 					<div>
-						Last updated on <FormattedDate date={updatedDate} />
+						Last updated: <FormattedDate date={updatedDate} />
 					</div>
 				)
 			}
+		</div>
 
-			<slot />
+		<h1>{title}</h1>
+
+		{
+			heroImage && (
+				<div class="mb-10">
+					<Image width={1952} height={976} src={heroImage} alt="" class="rounded-2xl shadow-2xl shadow-indigo-200" />
+				</div>
+			)
+		}
+
+		<div class="grid grid-cols-1 gap-22 lg:grid-cols-[1fr_20rem]">
+			<div>
+				<slot />
+			</div>
+
+			<aside>
+				<TableOfContents headings={headings} />
+			</aside>
 		</div>
 	</article>
 </Page>

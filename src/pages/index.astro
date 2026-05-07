@@ -3,7 +3,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import { getSortedBlogPosts } from "@/helpers/posts";
 
 import BlogPostPreview from "@/components/blog/blog-post-preview.astro";
-import Page from "@/layouts/Page.astro";
+import Page from "@/layouts/page.astro";
 import Sidebar from "@/components/layout/sidebar.astro"
 
 const posts = await getSortedBlogPosts();

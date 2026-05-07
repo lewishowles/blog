@@ -5,8 +5,10 @@
 @import "./footer.css" layer(components);
 
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
 @plugin "tailwindcss-hocus";
+
+@import "./prose.css" layer(utilities);
 
 @custom-variant dark (&:where(.dark, .dark *));
 

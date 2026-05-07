@@ -1,0 +1,302 @@
+---
+title: "Accessibility 101"
+description: "Accessibility should be considered at every stage of a project as a fundamental feature, not as an addon. Let's take a look at some of the basics, some of which you may know, and some of which you may not."
+pubDate: "May 5 2026"
+---
+
+import Callout from '@/components/content/callout.astro'
+import Highlight from '@/components/content/highlight.astro'
+
+I recently saw a post on Reddit where a developer had built a website for a customer, and after going live someone had pointed out that there were a number of fundamental accessibility issues on the website. There was a discussion about what to do at this point, and my opinion was that this should be used as a learning exercise, and those issues should be fixed for the customer at no extra charge.
+
+I say this for two reasons. The first is that if I were a customer I'd expect a web developer to cover the fundamentals of building a website—especially things I might not be aware of—just like I'd expect a solicitor to just handle the fundamentals of law without me having to do my own research beforehand. The second is that accessibility should be considered at the start of every project. It might make the project take longer, it might raise the base cost of every project, but it isn't an optional add on.
+
+I also notice that a lot of the feedback I give on designs or built pages is around accessibility, so for my first post I wanted to cover a number of key things to consider when it comes to the accessibility of your own projects.
+
+There's quite a lot in here, but as with most things, the more you apply them, the more they become second nature.
+
+## Before we begin
+
+Compassion for those with accessibility needs is really important. We want everyone to be able to go about their day and make the same informed decisions that we do. A lot of misunderstanding seems to come from thoughts like "it makes sense to me", or "I can see it", and therefore it must be OK. This is the classic "well it works for me" argument that I'm sure we've all heard, and used, before.
+
+But in my opinion we should try to default to the opposite thinking, such as "I can see it, but what about everyone else", or, "I understand what this means because I wrote it, but what if someone had no context?".
+
+There is probably a counter-argument to any argument you might make against accessibility or the type of person who is using a given website. Even if you're building something for a single company, and you know everyone that works there, what if someone new joins in the future?
+
+## Visual considerations
+
+### Ensure adequate colour contrast
+
+We start with colour because it's one of the biggest components of a project, and it should be considered earlier in the process than many of the build-focussed tips.
+
+The rules for determining "what is enough contrast" are complex, and depending on things like the size and weight of text. I use great tools such as https://colorcontrast.app/ to do the heavy lifting for a completely new design, but for a project with an existing colour system, you get a feel for which colours work together and which do not.
+
+[Insert example image]
+
+One thing to note is that these rules apply to more than just text. Particularly, icons that convey meaning (and aren't just decorative) should follow the same rules. As for buttons, there are two sides to consider—the text of the button as compared to the background of the button itself, and the background of the button as compared to where it appears, such as the background of the page or box that contains the button.
+
+<Callout type="key-points">
+- Use a tool to compare contrast. There are a lot of them out there, some even built into browsers or operating systems, letting you check at every stage of the process.
+- Always consider icons and buttons.
+- Remember that a score depends on the specific text and background colour. If your button gets darker on hover, for example, the text might also need to change.
+</Callout>
+
+### Don't convey meaning with colour alone
+
+There are a number of conventions that people generally "understand", such as "green means good". But that's not actually true.
+
+According to Colour Blind Awareness [one in 12 men and one in 200 women](https://www.colourblindawareness.org/colour-blindness/) have some form of [colour vision deficiency](https://www.nhs.uk/conditions/colour-vision-deficiency/), and in some cases may not be able to see any colour at all (known as Achromatopsia).
+
+Some browsers have built-in emulators for the various types of colour vision deficiency, such as Protanopia, which can be invaluable for testing your website, and I would strongly recommend doing so.
+
+Because of these statistics, it isn't actually possible to convey meaning to everyone using colour alone. A classic example is a green circle indicating a "good" status for an item. If someone doesn't know it's green, that meaning is lost for them. Even if they do, it may not actually be clear what "good" means in every case.
+
+[Insert example image]
+
+A better method is to provide some other context with the colour, such as an icon, or simple text that explains in words what the colour is conveying.
+
+[Insert example image]
+
+<Callout type="key-points">
+- Provide additional context when conveying meaning with colour, such that if that colour was no longer there, everyone still understands what's happening.
+- Colour vision deficiency is much more prevalent that people often think.
+- Someone with a form of colour vision deficiency may not actually realise they have it.
+</Callout>
+
+### Make text readable
+
+There are a few tweaks we can make to text to make it more readable, beyond its contrast.
+
+One of those is the line-height of text. For body text, this should generally be about `1.5`, so `24px` for `16px` text, for example. This gives each line a little more breathing room, and makes it easier to read.
+
+[Insert example image]
+
+Another is line length. A line of text that stretches all the way from one end of the screen to another can become very difficult to follow, especially if it's amonga paragraph of other lines. It's easy to lose track of where the start of the next line should be.
+
+Keeping text to a reasonable width (generally somewhere around 65 characters) greatly improves its readability, especially for long-form content.
+
+[Insert example image]
+
+<Callout type="key-points">
+- Give your text some room to breath—somewhere around `1.5` line height.
+- Don't let text run too wide—roughly 65 characters is a good place to start.
+</Callout>
+
+### Responsive design, and zoom
+
+Catering for different screen sizes is a key area for accessibility. We shouldn't assume that everyone has a desktop computer and a large screen to view our website, because they simply might not. A user might have decided that a phone is the most important device to them, and can't afford or justify having another, such as a laptop or desktop computer. The opposite could also be true.
+
+Because of that, we cater to everyone by making our website responsive.
+
+But it doesn't stop at those with different sized devices. Some users might be able to see, and use their vision to navigate a website, but may not be able to see _very well_ and will often use websites zoomed in—sometimes up to 400%. If we consider that person is using a 1080p screen, the viewable area for the website may be less than 250x250 pixels.
+
+When making a responsive website, we should make sure the website is at least readable and navigable even at those sizes, even if it isn't perfect.
+
+[Insert example image - blog header at 250x250]
+
+<Callout type="key-points">
+- Responsive design isn't just about a user's choice, but their circumstances.
+- Making a website responsive can help a much broader range of people than you might realise.
+</Callout>
+
+## Content and copy
+
+### Keep language clear
+
+I think most of us have tried to read a legal letter at some point, and it contains so much jargon and convolution that it feels like you're tripping over yourself trying to read it. The language may be precise, but it is _unclear to us_, and if it is unclear to us, we will have a hard time reading it.
+
+The same applies to all language. Given variation in reading level, familiarity with a concept, or conditions such as dyslexia and autism, we can't assume that everyone will understand what we mean. This is especially true if we're using domain-specific jargon and abbreviations.
+
+Aim to keep all text plain and simple. Within reason, if a person has no concept of what we're talking about, could they still understand what we're asking of them? If they understand what to do, do they know _how_ to do it? Providing hints and links can be especially helpful.
+
+<Callout type="key-points">
+- Don't use jargon where possible.
+- Provide reminders, even if you don't think you need them.
+</Callout>
+
+### Make link and button text descriptive
+
+Links and buttons should have text that explains where they go, or what they do. Importantly, the user should be confident what's about to happen without the context of the things around it, and without having to guess.
+
+For example, image a table where each row contains a "Delete" button, or cards on a homepage where each item has a title, some text, and a link that says "Learn more". Screen readers have the ability to display all links on a page in a list—but the text of the link is the only thing that is displayed. You can imagine how hard it would be to differentiate 10 different "Delete" buttons in a row with no context.
+
+<Highlight>Delete user Lewis Howles</Highlight> is better than <Highlight>Delete</Highlight>, just as <Highlight>Visit the MDN docs for the `button` tag</Highlight> is better than <Highlight>click here</Highlight>.
+
+<Callout type="key-points">
+- Remember, if the only thing I can see on this page is this link or button, do I still understand what it does?
+</Callout>
+
+### Provide confirmation and reassurance
+
+This is one that's particularly useful to me personally. Imagine a scenario where we're on a pricing page, and there are a few options for the user to choose from. Once they make that choice, we continue to the account information screen.
+
+Now, imagine that the user got distracted, something else came up, the phone rang, the hob caught on fire. You get the idea. When they come back, are they going to remember which option they chose, and why? Or are they going to have the start again?
+
+For some people, it can be a great help to provide a confirmation of what has been chosen. For example, which plan did they choose? Can you also provide a summary of the plan details so they can remember why they chose that one and not another?
+
+Reassurance goes hand-in-hand with confirmation. Persistent messages—such as <Highlight>User \<name\> added successfully</Highlight>—not only provide that confirmation, but also help in the scenarios where a user is distracted.
+
+Another example is deleting an item from a list. We want to avoid the user losing confidence that they just deleted the correct item. A confirmation message that includes an identifiable piece of information, such as a user's name, can help provide reassurance.
+
+<Highlight>User "Lewis Howles" successfully deleted.</Highlight> provides more concrete information than just <Highlight>User successfully deleted.</Highlight>.
+
+Remember, not everyone works in the same way. Some people might never get distracted in the middle of an important flow. But I certainly do.
+
+<Callout type="key-points">
+- People get distracted, so it helps to plan for that.
+- Remind people what they've chosen.
+- Provide feedback and reassurance of actions that were successful.
+- Include identifiable information in those messages. Point to which item was affected, as well as what happened.
+</Callout>
+
+## Structure and semantics
+
+### Keep headings consistent
+
+Something that helps the proper navigation of a website is a predictable structure. For headings, that means using headings in succession. Don't jump from `h1` to `h4`, for example. I see this a lot because "`h4` feels about the right _size_ for this heading". But that's the point—we're using headings for their meaning, not their appearance. Use the correct heading level, and change its appearance if needed.
+
+To go even further, a key tip that I've always remembered is <Highlight>if it looks like a heading, make it a heading.</Highlight>. The reason for this is to make sure that anyone using assistive software to help them read a page gets the same structure as those looking at it visually. That is, something that stands out visually stands out in the structure, too.
+
+<Callout type="key-points">
+- Use headings for their number, not their appearance.
+- If it looks like a heading, make it a heading.
+</Callout>
+
+### Make use of landmark regions
+
+Keeping to the theme of a predictable structure, use "landmark regions" where appropriate. These include things like `main`, `article`, `aside`, `nav`, and so on. These can be used to help users jump around a page and find the information they need more quickly.
+
+### Ensure that the visual order of elements matches the DOM
+
+This was an interesting one when it dawned on me. Remember, assistive software isn't solely for those with no sight; it might also be used by those with reduced sight, but still use that sight to help them navigate.
+
+To that end, when tabbing through elements on a page, the order of that tabbing should match the visual order on the screen. Focus shouldn't go backwards, or jump over an element only to return to it later.
+
+## Images and media
+
+### Use appropriate alt text, even if that means none
+
+`alt` text provides a description of an image to someone who can't see it—even if it's just because the image didn't load, and `alt` text should _stand in_ for the image for those people.
+
+For an image that conveys meaning, that means the text should describe the image. For example, <Highlight>A zoomed-in screenshot of the homepage of the howles.dev blog, highlighting the theme toggle</Highlight> is better than <Highlight>Blog screenshot</Highlight>.
+
+If an image is decorative and has no meaning, but still needs to be an `img` tag, should have an empty alt tag, which signifies that the image has no meaning.
+
+```html
+<img src="/path/to/my/decorative-image.png" alt="" />
+```
+
+### Provide extra help for complex images, such as charts
+
+When using a complex image, such as a chart, it's important to make sure the same information is available to everyone.
+
+If your chart has a legend which contains the relevant figures, and that legend is marked up as a definition list `dl`, then that might be all you need.
+
+If that's not possible, a reasonable description should be provided that explains the findings that you're trying to convey.
+
+### Provide captions and transcripts for video and audio-only content.
+
+Much like TV shows should come with subtitles, the same applies to video online, as well as audio-only formats such as podcasts or meetings.
+
+However, as well as being invaluable for those who are deaf, this could also apply to someone who's in a busy environment and doesn't have headphones. Providing a method for those people to still consume the media, despite their current environment, can make a world of difference.
+
+### Avoid autoplay
+
+There are a few reasons to avoid autoplaying videos. One is to make sure you don't blast out sound or music on someone's device unexpectedly, especially if they're in public. Another is because the person might have a poor connection, and loading that video might slow everything else down, even if they didn't intend to watch it.
+
+Let the user control if and when they want to play a video.
+
+## Keyboard and focus
+
+### Ensure that every action can be done without a mouse
+
+Something that fewer people think about than they should is that not everyone can use a mouse. Some people only have access to a keyboard. For those people, it's imperative that every action is available to them via a keyboard.
+
+That even applies to common "mouse-only" tasks, such as drag and drop. When ordering items, provide an alternative that uses buttons. If offering a drop-target for files, provide a button that opens the file browser.
+
+<Callout type="key-points">
+- Not everyone has a mouse, or access to one right now.
+- Nothing should be impossible with a keyboard alone.
+</Callout>
+
+### Use visible focus indicators
+
+If everything is accessible to a keyboard, it should be obvious to the user _where_ the keyboard's focus currently is. A mouse has a pointer that shows someone where they are on a page and what they're about to do. A keyboard doesn't.
+
+With more complex interactions, handling focus becomes even more important. For example, if the user focuses on a "delete" action in a table, and that delete removes the item from the table, the user's focus should be placed somewhere sensible, such as the next row. If it isn't, focus will revert to the start of the page, which can cause a lot of frustration.
+
+<Callout type="key-points">
+- Every element should be visible on screen when focus is applied.
+- Every element should have a _visible_ focus indicator—such as a coloured ring.
+- No element should disappear off the page without the user's focus being "handled" and placed somewhere sensible.
+- Focus order should be sensible, and match visual order.
+</Callout>
+
+### Don't forget skip links
+
+Skip links help people who do need to navigate with a keyboard avoid having to go through your header and menus every time the page changes. The link simply references the main content of the page, and jumps the user there, and we give our main content wrapper a tabindex, so that it can be focused.
+
+A simple skip link might look something like this.
+
+```html
+<a href="#main" id="skip-link">Skip to main content</a>
+
+...
+
+<main id="main" tabindex="-1">
+	...
+</main>
+```
+
+```css
+#skip-link {
+	position: absolute;
+	top: -100%;
+
+	:focus-visible {
+		top: 0;
+	}
+}
+```
+
+## Links and navigation
+
+### Indicate if a link will open in a new tab
+
+Strictly, links shouldn't open in a new tab. But when they do, providing an indicator to that effect, and being consistent with it, will help the user better understand what's about to happen.
+
+For example, imagine there's a link to get more help on a page that contains a form. The help link opens a new tab, because we don't want the user to lose their progress. If you half fill the form and there's something you don't understand, without an indicator you might spend time wondering whether you're about to lose something. With an indicator, you have the confidence to continue.
+
+### Use breadcrumbs for complex site structure
+
+When using a complex site, particularly some kind of administration website, breadcrumbs can provide context that might not be obvious otherwise. For example, imagine you have an app where you can edit third-party users, but you can also edit staff members.
+
+If you're on a screen whose title is "Lewis Howles", it might not be immediately obvious which of those this person is. Breadcrumbs, such as <Highlight>Staff members > Lewis Howles</Highlight> can provide that context immediately and consistently.
+
+## Motion and interaction
+
+### Respect `prefers-reduced-motion`
+
+Some people have a sensitivity to visual motion. That is, heavy motion on a page can give a feeling a bit like car sickness.
+
+That's why `prefers-reduced-motion` is so important. Any motion should ideally be guarded by the prefers-reduced-motion media query, so that when this setting is turned on, motion on a page is reduced to a minimum.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+	...
+}
+```
+
+[Learn more about `prefers-reduced-motion` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion)
+
+### Give the user sufficient time to complete a task or read
+
+This one comes down to simple processing speed. If an error message disappears after a certain amount of time, don't assume that it's long enough for everyone to have read any message that might appear there.
+
+Ideally, messages shouldn't disappear at all until the user dismisses them, so you can be sure they've been read and understood.
+
+### Ensure that touch targets are large enough
+
+Finally, we have touch targets. On touch screens, any link or button should be large enough to make it easy to tap. Some people may have reduced dexterity, for example, and reliably touching a tiny target may be particularly difficult. Or, there might be a number of actions next to each other, which could make it easier to touch the wrong one.
+
+A good starting point is 44x44 pixels.
