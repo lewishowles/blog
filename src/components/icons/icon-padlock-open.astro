@@ -1,0 +1,22 @@
+---
+const { title, class: className, ...props } = Astro.props;
+---
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 18 18"
+	fill="none"
+	stroke="currentColor"
+	stroke-width="1.5"
+	stroke-linejoin="round"
+	stroke-linecap="round"
+	class:list={[className]}
+	role={title ? "img" : undefined}
+	aria-hidden={title ? undefined : "true"}
+	{...props}
+>
+	{title && <title>{title}</title>}
+
+	<path d="M5.75 8.25V5A3.25 3.25 0 0 1 9 1.75h0A3.25 3.25 0 0 1 12.25 5M9 11.75v1" />
+	<rect width="11.5" height="8" x="3.25" y="8.25" rx="2" ry="2" />
+</svg>

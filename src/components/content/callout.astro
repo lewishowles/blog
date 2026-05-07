@@ -1,0 +1,65 @@
+---
+import IconPadlockOpen from "@/components/icons/icon-padlock-open.astro";
+import IconNote from "@/components/icons/icon-note.astro";
+import IconDiamond from "@/components/icons/icon-diamond.astro";
+import IconWarning from "@/components/icons/icon-warning.astro";
+import IconDanger from "@/components/icons/icon-danger.astro";
+
+export interface Props {
+	type?: "note" | "tip" | "warning" | "danger" | "key-points";
+	title?: string;
+	headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+// The properties for this component, and their defaults.
+const { type = "note", title, headingLevel = 4 } = Astro.props;
+// The heading level to use for this callout.
+const Heading = `h${headingLevel}`;
+
+type CalloutType = "note" | "tip" | "warning" | "danger" | "key-points";
+
+const configuration: Record<CalloutType, { label: string; wrapperClass: string, titleClass: string }> = {
+	"key-points": {
+		label: "Key points",
+		wrapperClass: "bg-indigo-50 border-indigo-300 dark:bg-indigo-500/20 dark:border-indigo-500",
+		titleClass: "text-indigo-600 dark:text-current",
+	},
+	"note": {
+		label: "Note",
+		wrapperClass: "bg-blue-50 border-blue-600 dark:bg-blue-500/20 dark:border-blue-500",
+		titleClass: "text-blue-600 dark:text-current",
+	},
+	"tip": {
+		label: "Tip",
+		wrapperClass: "bg-teal-50 border-teal-600 dark:bg-teal-500/20 dark:border-teal-500",
+		titleClass: "text-teal-600 dark:text-current",
+	},
+	"warning": {
+		label: "Warning",
+		wrapperClass: "bg-yellow-50 border-yellow-600 dark:bg-yellow-500/20 dark:border-yellow-500",
+		titleClass: "text-yellow-600 dark:text-current",
+	},
+	"danger": {
+		label: "Danger",
+		wrapperClass: "bg-red-50 border-red-600 dark:bg-red-500/20 dark:border-red-500",
+		titleClass: "text-red-600 dark:text-current",
+	},
+};
+
+const { label, wrapperClass, titleClass } = configuration[type] ?? configuration.note;
+const calloutTitle = title ?? label;
+---
+
+<aside class:list={["my-6 border rounded-lg px-6 pt-5 pb-2 callout", wrapperClass]}>
+	<Heading class:list={["not-prose flex items-center gap-2 mb-2 font-bold", titleClass]}>
+		{type === "key-points" && <IconPadlockOpen />}
+		{type === "note" && <IconNote />}
+		{type === "tip" && <IconDiamond />}
+		{type === "warning" && <IconWarning />}
+		{type === "danger" && <IconDanger />}
+
+		{calloutTitle}
+	</Heading>
+
+	<slot />
+</aside>
