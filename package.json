@@ -10,7 +10,8 @@
 		"dev": "astro dev",
 		"preview": "astro preview",
 		"build": "astro build",
-		"lint": "eslint . --fix"
+		"lint": "eslint . --fix",
+		"deploy": "bun run build; gh-pages -d dist --cname blog.howles.dev --dotfiles"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "5.0.4",
@@ -31,6 +32,7 @@
 		"astro-eslint-parser": "^1.4.0",
 		"eslint": "^10.3.0",
 		"eslint-plugin-astro": "^1.7.0",
+		"gh-pages": "^6.3.0",
 		"tailwindcss-hocus": "^1.0.0"
 	}
 }
