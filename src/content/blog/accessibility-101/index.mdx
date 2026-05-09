@@ -31,14 +31,30 @@ We start with colour because it's one of the biggest components of a project, an
 
 The rules for determining "what is enough contrast" are complex, and depending on things like the size and weight of text. I use great tools such as https://colorcontrast.app/ to do the heavy lifting for a completely new design, but for a project with an existing colour system, you get a feel for which colours work together and which do not.
 
-[Insert example image]
+The key thing to remember is that whether you personally can read the text or not is not the goal.
 
-One thing to note is that these rules apply to more than just text. Particularly, icons that convey meaning (and aren't just decorative) should follow the same rules. As for buttons, there are two sides to consider—the text of the button as compared to the background of the button itself, and the background of the button as compared to where it appears, such as the background of the page or box that contains the button.
+<figure>
+	<div class="grid md:grid-cols-2 not-prose">
+		<div class="bg-purple-50 text-purple-300 p-12 rounded-t-2xl md:rounded-s-2xl md:rounded-te-none">
+			<h4 class="font-bold text-lg mb-4">Use appropriate colour contrast</h4>
+			<p class="text-sm">Many people can probably read this text, but that isn’t true for everyone.</p>
+		</div>
+		<div class="bg-purple-900 p-12 rounded-b-2xl md:rounded-e-2xl md:rounded-be-none">
+			<h4 class="font-bold text-purple-50 text-lg mb-4">Use appropriate colour contrast</h4>
+			<p class="text-sm text-purple-200">On the other hand, this text has enough contrast for everyone to enjoy.</p>
+		</div>
+	</div>
+
+	<figcaption>This example contains two halves, one with low contrast text, and one half with high contrast text to highlight the difference and the importance of colour choice.</figcaption>
+</figure>
+
+A final thing to note is that these rules apply to more than just text. Particularly, icons that convey meaning (and aren't just decorative) should follow the same rules. As for buttons, there are two sides to consider—the text of the button as compared to the background of the button itself, and the background of the button as compared to where it appears, such as the background of the page or box that contains the button.
 
 <Callout type="key-points">
 - Use a tool to compare contrast. There are a lot of them out there, some even built into browsers or operating systems, letting you check at every stage of the process.
 - Always consider icons and buttons.
 - Remember that a score depends on the specific text and background colour. If your button gets darker on hover, for example, the text might also need to change.
+- Don't forget about gradients. Make sure even the weakest contrast passes.
 </Callout>
 
 ### Don't convey meaning with colour alone
@@ -51,11 +67,31 @@ Some browsers have built-in emulators for the various types of colour vision def
 
 Because of these statistics, it isn't actually possible to convey meaning to everyone using colour alone. A classic example is a green circle indicating a "good" status for an item. If someone doesn't know it's green, that meaning is lost for them. Even if they do, it may not actually be clear what "good" means in every case.
 
-[Insert example image]
+<figure>
+	<div class="flex items-center gap-4 p-4 rounded-2xl border border-grey-200 not-prose">
+		<div class="size-3.5 bg-green-400 border border-green-600 rounded-full"></div>
+		<div class="flex flex-col md:gap-2 md:flex-row md:items-center">
+			<h4 class="font-bold text-grey-950">Sophie Wardhaugh</h4>
+			<p class="text-sm text-grey-500">Customer service</p>
+		</div>
+	</div>
+
+	<figcaption>Using colour alone to convey meaning can easily lead to confusion. For example, does this green element mean that the user is online, or available for a call, or within any current targets?</figcaption>
+</figure>
 
 A better method is to provide some other context with the colour, such as an icon, or simple text that explains in words what the colour is conveying.
 
-[Insert example image]
+<figure>
+	<div class="flex items-center gap-4 p-4 rounded-2xl border border-grey-200 not-prose">
+		<div class="flex flex-col md:gap-2 md:flex-row md:items-center">
+			<h4 class="font-bold text-grey-950">Sophie Wardhaugh</h4>
+			<p class="text-sm text-grey-500">Customer service</p>
+		</div>
+		<span class="text-green-700 ms-auto text-xs uppercase tracking-wide">Online</span>
+	</div>
+
+	<figcaption>Our example now uses the word "online" to convey what the colour previously hinted at.</figcaption>
+</figure>
 
 <Callout type="key-points">
 - Provide additional context when conveying meaning with colour, such that if that colour was no longer there, everyone still understands what's happening.
@@ -67,18 +103,35 @@ A better method is to provide some other context with the colour, such as an ico
 
 There are a few tweaks we can make to text to make it more readable, beyond its contrast.
 
-One of those is the line-height of text. For body text, this should generally be about `1.5`, so `24px` for `16px` text, for example. This gives each line a little more breathing room, and makes it easier to read.
+One of those is the line-height of text. For body text, this should generally be about `1.5`, so `24px` for `16px` text, for example. This gives each line a little more breathing room, and makes it easier to read. Note that the larger the text, the less this line height should be, because at larger sizes text starts to look less roomy and more disconnected.
 
-[Insert example image]
+<figure>
+	<div class="not-prose flex flex-col gap-6 px-8 py-6 rounded-lg border border-grey-200">
+		<div>
+			<h4 class="font-bold text-lg mb-2">Cramped text takes more effort to read</h4>
+			<p class="text-sm leading-4">Text that is too tight is more difficult to read, especially in long paragraphs. Anything that looks less natural takes more cognitive effort to read, and as such is a less pleasant experience.</p>
+		</div>
+		<div>
+			<h4 class="font-bold text-lg mb-2">Give text room to breathe</h4>
+			<p class="text-sm">Text with a reasonable line height is just right. Text has room to breathe and feels more natural.</p>
+		</div>
+		<div>
+			<h4 class="font-bold text-lg mb-2">But not too much room</h4>
+			<p class="text-sm leading-8">Text that is too loose is difficult to read, too. It makes text feel disjointed, and as though it isn't part of the same sentence or paragraph.</p>
+		</div>
+	</div>
+
+	<figcaption>This figure contains examples of three different line heights, one too short, making text feel cramped, one too long, making text feel less coherent, and one in the middle, feeling clear, but still connected.</figcaption>
+</figure>
 
 Another is line length. A line of text that stretches all the way from one end of the screen to another can become very difficult to follow, especially if it's amonga paragraph of other lines. It's easy to lose track of where the start of the next line should be.
 
 Keeping text to a reasonable width (generally somewhere around 65 characters) greatly improves its readability, especially for long-form content.
 
-[Insert example image]
+Finally,
 
 <Callout type="key-points">
-- Give your text some room to breath—somewhere around `1.5` line height.
+- Give your text some room to breath—somewhere around `1.5` line height for normal body text, reduced as text gets larger.
 - Don't let text run too wide—roughly 65 characters is a good place to start.
 </Callout>
 
@@ -92,7 +145,25 @@ But it doesn't stop at those with different sized devices. Some users might be a
 
 When making a responsive website, we should make sure the website is at least readable and navigable even at those sizes, even if it isn't perfect.
 
-[Insert example image - blog header at 250x250]
+<figure>
+	<div class="not-prose flex flex-wrap gap-4">
+		<div class="bg-grey-950 text-grey-50 w-full max-w-62.5 h-62.5 p-6">
+			This square represents one of the more extreme examples covered by some accessibility audits. Try to make sure, at least, that nothing is completely broken.
+		</div>
+
+		<div class="w-full max-w-62.5 h-62.5 bg-grey-100 flex flex-col justify-center @container">
+			<div class="bg-white border border-grey-200 @md:flex @md:items-center @md:gap-4 p-4 @md:rounded-2xl">
+				<div class="@md:flex @md:flex-row @md:items-center">
+					<h4 class="font-bold text-grey-950">Sophie Wardhaugh</h4>
+					<p class="text-sm text-grey-500">Customer service</p>
+				</div>
+				<span class="text-green-700 ms-auto text-xs uppercase tracking-wide">Online</span>
+			</div>
+		</div>
+	</div>
+
+	<figcaption>These examples represent a case where the viewport of the screen is greatly reduced, and that responsive design can make the difference between usable and not.</figcaption>
+</figure>
 
 <Callout type="key-points">
 - Responsive design isn't just about a user's choice, but their circumstances.
@@ -166,11 +237,27 @@ To go even further, a key tip that I've always remembered is <Highlight>if it lo
 
 Keeping to the theme of a predictable structure, use "landmark regions" where appropriate. These include things like `main`, `article`, `aside`, `nav`, and so on. These can be used to help users jump around a page and find the information they need more quickly.
 
+For example, a user navigating with a keyboard can skip past the entire header and navigation menu to jump straight to the `<main>` content using assistive software, rather than tabbing through every link. This saves time and reduces frustration on every page load.
+
+<Callout type="key-points">
+- Use semantic HTML regions (`main`, `nav`, `article`, `aside`) instead of standard `div` tags where possible.
+- They can provide more meaning to a page, especially for those using assistive technology.
+</Callout>
+
 ### Ensure that the visual order of elements matches the DOM
 
 This was an interesting one when it dawned on me. Remember, assistive software isn't solely for those with no sight; it might also be used by those with reduced sight, but still use that sight to help them navigate.
 
 To that end, when tabbing through elements on a page, the order of that tabbing should match the visual order on the screen. Focus shouldn't go backwards, or jump over an element only to return to it later.
+
+For example, using CSS `flexbox` with `flex-direction: row-reverse` or CSS Grid `order` property reorders elements visually, but the DOM order (how assistive software sees the page) stays the same. This could cause a keyboard user tabbing through the page to see focus move in a confusing, reverse pattern.
+
+When you need visual order to differ from DOM order consider whether the HTML itself should be reordered instead, which is often the better solution.
+
+<Callout type="key-points">
+- CSS properties like `flex-direction` and `order` can separate visual layout from DOM order.
+- Always verify tab order matches what's on screen.
+</Callout>
 
 ## Images and media
 
@@ -277,9 +364,9 @@ If you're on a screen whose title is "Lewis Howles", it might not be immediately
 
 ### Respect `prefers-reduced-motion`
 
-Some people have a sensitivity to visual motion. That is, heavy motion on a page can give a feeling a bit like car sickness.
+Some people have a sensitivity to visual motion. This can affect those with vestibular disorders, migraines, or autism. For others, motion can just feel distracting or disorienting.
 
-That's why `prefers-reduced-motion` is so important. Any motion should ideally be guarded by the prefers-reduced-motion media query, so that when this setting is turned on, motion on a page is reduced to a minimum.
+That's why `prefers-reduced-motion` is so important. Any motion should ideally be guarded by the prefers-reduced-motion media query, so that when this setting is turned on, motion on a page is reduced to a minimum. This respects the user's preferences without removing functionality.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -300,3 +387,13 @@ Ideally, messages shouldn't disappear at all until the user dismisses them, so y
 Finally, we have touch targets. On touch screens, any link or button should be large enough to make it easy to tap. Some people may have reduced dexterity, for example, and reliably touching a tiny target may be particularly difficult. Or, there might be a number of actions next to each other, which could make it easier to touch the wrong one.
 
 A good starting point is 44x44 pixels.
+
+## Final thoughts
+
+Accessibility requirements cover a lot of ground and affects a lot of people. Unfortunately, they also seem to be misunderstood, or just ignored, by some developers. Everyone is still learning, and still improving, but if you have the desire and the will to make things better, you're already one step ahead of most.
+
+Even large companies aren't immune. A product that I had built the front-end for was being taken through an accessibility audit, and there was one bit of functionality that we wanted to include but couldn't find a reasonable, accessible implementation. We ended up removing that functionality and giving everyone the best experience we could, which I think was the right thing to do.
+
+We asked the auditor "this pattern is similar to one we've seen in use on Google, how do they get away with it?". Their reply was along the lines of <Highlight>"just because it's Google, don't assume it's accessible"</Highlight>.
+
+Fair enough.
