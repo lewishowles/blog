@@ -14,12 +14,12 @@ const visibleHeadings = headings.filter(({ depth }) => depth === 2 || depth === 
 
 {visibleHeadings.length > 0 && (
 	<nav>
-		<h4 class="mb-4 font-bold text-(--text-colour-title)">On this page</h4>
+		<h2 class="mb-4 font-bold text-(--text-colour-title)">On this page</h2>
 
 		<ol class="flex flex-col gap-2">
 			{visibleHeadings.map(({ depth, slug, text }) => (
 				<li class:list={[{ "pl-2": depth === 3 }]}>
-					<a href={`#${slug}`}>{text}</a>
+					<a href={`#${slug}`} class="text-current">{text}</a>
 				</li>
 			))}
 		</ol>
