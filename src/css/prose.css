@@ -1,3 +1,13 @@
 .callout {
 	--tw-prose-bullets: currentColor;
 }
+
+.prose {
+	& :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		background-color: var(--tw-prose-pre-bg) !important;
+
+		.dark & {
+			background-color: oklch(0 0 none / 0.5) !important;
+		}
+	}
+}

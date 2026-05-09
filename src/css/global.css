@@ -102,20 +102,26 @@
 		--logo-gradient-start: var(--color-pink-700);
 		--logo-gradient-end: var(--color-purple-800);
 
+		--bg-colour-content: var(--color-white);
 		--link-base-colour: var(--color-indigo-800);
 		--link-hocus-colour: var(--color-pink-800);
 		--text-colour-title: var(--color-grey-950);
-		--text-colour-muted: var(--colour-grey-500);
+		--text-colour-muted: var(--color-grey-500);
+		--border-colour-light: var(--color-grey-200);
+		--border-colour-standard: var(--color-grey-300);
 	}
 
 	.dark {
 		--logo-gradient-start: currentColor;
 		--logo-gradient-end: currentColor;
 
+		--bg-colour-content: var(--color-indigo-950);
 		--link-base-colour: var(--color-indigo-300);
 		--link-hocus-colour: var(--color-pink-300);
 		--text-colour-title: var(--color-grey-50);
 		--text-colour-muted: var(--color-grey-400);
+		--border-colour-light: var(--color-grey-600);
+		--border-colour-standard: var(--color-grey-500);
 	}
 
 	* {

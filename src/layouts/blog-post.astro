@@ -2,9 +2,10 @@
 import type { MarkdownHeading } from "astro";
 import type { CollectionEntry } from "astro:content";
 
-import TableOfContents from "@/components/blog/table-of-contents.astro";
+import DoodleLewis from "@/components/doodles/doodle-lewis.astro";
 import FormattedDate from "@/components/helpers/formatted-date.astro";
 import Page from "@/layouts/page.astro";
+import TableOfContents from "@/components/blog/table-of-contents.astro";
 import { Image } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
@@ -14,7 +15,7 @@ const { title, description, headings, pubDate, updatedDate, heroImage } = Astro.
 
 <Page title={title} description={description}>
 	<article class="prose prose-slate dark:prose-invert max-w-none">
-		<div class="flex gap-4 mb-2 text-grey-500">
+		<div class="flex gap-4 mb-2 text-colour-muted">
 			<FormattedDate date={pubDate} />
 
 			{
@@ -41,6 +42,8 @@ const { title, description, headings, pubDate, updatedDate, heroImage } = Astro.
 		<div class="grid grid-cols-1 gap-22 lg:grid-cols-[1fr_20rem]">
 			<div>
 				<slot />
+
+				<DoodleLewis class="size-auto text-colour-link" />
 			</div>
 
 			<aside class="not-prose">

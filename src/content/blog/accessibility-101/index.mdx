@@ -35,13 +35,13 @@ The key thing to remember is that whether you personally can read the text or no
 
 <figure>
 	<div class="grid md:grid-cols-2 not-prose">
-		<div class="bg-purple-50 text-purple-300 p-12 rounded-t-2xl md:rounded-s-2xl md:rounded-te-none">
+		<div class="bg-indigo-50 text-indigo-300 p-12 rounded-t-2xl md:rounded-s-2xl md:rounded-se-none dark:bg-white/5 dark:text-indigo-600">
 			<h4 class="font-bold text-lg mb-4">Use appropriate colour contrast</h4>
 			<p class="text-sm">Many people can probably read this text, but that isn’t true for everyone.</p>
 		</div>
-		<div class="bg-purple-900 p-12 rounded-b-2xl md:rounded-e-2xl md:rounded-be-none">
-			<h4 class="font-bold text-purple-50 text-lg mb-4">Use appropriate colour contrast</h4>
-			<p class="text-sm text-purple-200">On the other hand, this text has enough contrast for everyone to enjoy.</p>
+		<div class="bg-indigo-900 p-12 rounded-b-2xl md:rounded-e-2xl md:rounded-es-none">
+			<h4 class="font-bold text-indigo-50 text-lg mb-4">Use appropriate colour contrast</h4>
+			<p class="text-sm text-indigo-200">On the other hand, this text has enough contrast for everyone to enjoy.</p>
 		</div>
 	</div>
 
@@ -68,11 +68,11 @@ Some browsers have built-in emulators for the various types of colour vision def
 Because of these statistics, it isn't actually possible to convey meaning to everyone using colour alone. A classic example is a green circle indicating a "good" status for an item. If someone doesn't know it's green, that meaning is lost for them. Even if they do, it may not actually be clear what "good" means in every case.
 
 <figure>
-	<div class="flex items-center gap-4 p-4 rounded-2xl border border-grey-200 not-prose">
-		<div class="size-3.5 bg-green-400 border border-green-600 rounded-full"></div>
+	<div class="flex items-center gap-4 p-4 rounded-2xl border border-colour-light not-prose dark:border-none dark:bg-white/10">
+		<div class="size-3.5 bg-green-400 border border-green-600 rounded-full dark:bg-green-600/40"></div>
 		<div class="flex flex-col md:gap-2 md:flex-row md:items-center">
-			<h4 class="font-bold text-grey-950">Sophie Wardhaugh</h4>
-			<p class="text-sm text-grey-500">Customer service</p>
+			<h4 class="font-bold text-colour-title">Sophie Wardhaugh</h4>
+			<p class="text-sm text-colour-muted">Customer service</p>
 		</div>
 	</div>
 
@@ -82,12 +82,12 @@ Because of these statistics, it isn't actually possible to convey meaning to eve
 A better method is to provide some other context with the colour, such as an icon, or simple text that explains in words what the colour is conveying.
 
 <figure>
-	<div class="flex items-center gap-4 p-4 rounded-2xl border border-grey-200 not-prose">
+	<div class="flex items-center gap-4 p-4 rounded-2xl border border-colour-light not-prose dark:border-none dark:bg-white/10">
 		<div class="flex flex-col md:gap-2 md:flex-row md:items-center">
-			<h4 class="font-bold text-grey-950">Sophie Wardhaugh</h4>
-			<p class="text-sm text-grey-500">Customer service</p>
+			<h4 class="font-bold text-colour-title">Sophie Wardhaugh</h4>
+			<p class="text-sm text-colour-muted">Customer service</p>
 		</div>
-		<span class="text-green-700 ms-auto text-xs uppercase tracking-wide">Online</span>
+		<span class="text-green-700 ms-auto text-xs uppercase tracking-wide dark:text-green-400">Online</span>
 	</div>
 
 	<figcaption>Our example now uses the word "online" to convey what the colour previously hinted at.</figcaption>
@@ -106,7 +106,7 @@ There are a few tweaks we can make to text to make it more readable, beyond its 
 One of those is the line-height of text. For body text, this should generally be about `1.5`, so `24px` for `16px` text, for example. This gives each line a little more breathing room, and makes it easier to read. Note that the larger the text, the less this line height should be, because at larger sizes text starts to look less roomy and more disconnected.
 
 <figure>
-	<div class="not-prose flex flex-col gap-6 px-8 py-6 rounded-lg border border-grey-200">
+	<div class="not-prose flex flex-col gap-6 px-8 py-6 rounded-lg border border-colour-light dark:border-none dark:bg-white/5">
 		<div>
 			<h4 class="font-bold text-lg mb-2">Cramped text takes more effort to read</h4>
 			<p class="text-sm leading-4">Text that is too tight is more difficult to read, especially in long paragraphs. Anything that looks less natural takes more cognitive effort to read, and as such is a less pleasant experience.</p>
@@ -147,17 +147,17 @@ When making a responsive website, we should make sure the website is at least re
 
 <figure>
 	<div class="not-prose flex flex-wrap gap-4">
-		<div class="bg-grey-950 text-grey-50 w-full max-w-62.5 h-62.5 p-6">
+		<div class="bg-grey-950 text-grey-50 w-full max-w-62.5 h-62.5 p-6 dark:bg-white/10">
 			This square represents one of the more extreme examples covered by some accessibility audits. Try to make sure, at least, that nothing is completely broken.
 		</div>
 
-		<div class="w-full max-w-62.5 h-62.5 bg-grey-100 flex flex-col justify-center @container">
-			<div class="bg-white border border-grey-200 @md:flex @md:items-center @md:gap-4 p-4 @md:rounded-2xl">
+		<div class="w-full max-w-62.5 h-62.5 bg-grey-100 flex flex-col justify-center dark:bg-white/10 @container">
+			<div class="bg-colour-content border border-colour-light @md:flex @md:items-center @md:gap-4 p-4 @md:rounded-2xl">
 				<div class="@md:flex @md:flex-row @md:items-center">
-					<h4 class="font-bold text-grey-950">Sophie Wardhaugh</h4>
-					<p class="text-sm text-grey-500">Customer service</p>
+					<h4 class="font-bold text-colour-title">Sophie Wardhaugh</h4>
+					<p class="text-sm text-colour-muted">Customer service</p>
 				</div>
-				<span class="text-green-700 ms-auto text-xs uppercase tracking-wide">Online</span>
+				<span class="text-green-700 ms-auto text-xs uppercase tracking-wide dark:text-green-400">Online</span>
 			</div>
 		</div>
 	</div>
