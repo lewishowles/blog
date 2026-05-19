@@ -99,8 +99,8 @@
 	:root {
 		--primary-gradient-start: var(--color-pink-700);
 		--primary-gradient-end: var(--color-purple-800);
-		--logo-gradient-start: var(--color-pink-700);
-		--logo-gradient-end: var(--color-purple-800);
+		--logo-h-colour: var(--color-indigo-950);
+		--logo-dot-colour: var(--color-indigo-700);
 
 		--bg-colour-content: var(--color-white);
 		--link-base-colour: var(--color-indigo-800);
@@ -112,8 +112,8 @@
 	}
 
 	.dark {
-		--logo-gradient-start: currentColor;
-		--logo-gradient-end: currentColor;
+		--logo-h-colour: #fff;
+		--logo-dot-colour: var(--color-indigo-300);
 
 		--bg-colour-content: var(--color-indigo-950);
 		--link-base-colour: var(--color-indigo-300);
