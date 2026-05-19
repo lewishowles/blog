@@ -9,10 +9,10 @@ import TableOfContents from "@/components/blog/table-of-contents.astro";
 
 type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 
-const { title, description, headings, pubDate, updatedDate } = Astro.props;
+const { title, description, headings, heroImage, pubDate, updatedDate } = Astro.props;
 ---
 
-<Page title={title} description={description}>
+<Page title={title} description={description} heroImage={heroImage}>
 	<article class="prose prose-slate dark:prose-invert max-w-none">
 		<div class="flex gap-4 mb-2 text-colour-muted">
 			<FormattedDate date={pubDate} />

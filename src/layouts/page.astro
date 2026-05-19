@@ -3,13 +3,13 @@ import Footer from "@/components/layout/footer/footer.astro";
 import Header from "@/components/layout/header/header.astro";
 import Meta from "@/components/layout/meta.astro";
 
-const { title = "", description = "" } = Astro.props;
+const { title = "", description = "", heroImage } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<Meta title={title} description={description} />
+		<Meta title={title} description={description} heroImage={heroImage} />
 
 		<slot name="head" />
 	</head>
